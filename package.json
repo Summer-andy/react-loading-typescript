@@ -1,7 +1,7 @@
 {
-  "name": "react-loading-ts",
+  "name": "react-loading-typescript",
   "version": "0.0.1",
-  "description": "",
+  "description": "this project will use typescript to build react-loading🏗",
   "main": "./lib/index.js",
   "scripts": {
     "build": "rm -rf ./lib/* && tsc",
@@ -64,12 +64,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/sixiaodong123/react-card"
+    "url": "git+https://github.com/Summer-andy/react-loading-typescript"
   },
   "bugs": {
-    "url": "https://github.com/sixiaodong123/react-card/issues"
+    "url": "https://github.com/Summer-andy/react-loading-typescript/issues"
   },
-  "homepage": "https://github.com/sixiaodong123/react-card#README",
+  "homepage": "https://github.com/Summer-andy/react-loading-typescript#README",
   "types": "./lib/index.d.ts",
   "dependencies": {
     "styled-components": "^4.3.2"
