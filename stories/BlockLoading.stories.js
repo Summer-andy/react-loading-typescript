@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BatteryLoading } from '../src/index.ts';
-storiesOf('BatteryLoading', module)
+import { BlockLoading } from '../src/index.ts';
+storiesOf('BlockLoading', module)
   .addDecorator(withKnobs)
-  .add('BatteryLoading', () => {
+  .add('BlockLoading', () => {
     return (
-      <BatteryLoading />
+      <BlockLoading />
     );
   });

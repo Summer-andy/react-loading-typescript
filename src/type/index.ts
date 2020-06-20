@@ -3,4 +3,5 @@ export interface LoadingInfo  {
   speed: number;
   color: string;
   size: string;
+  inColor?: string;
 }
