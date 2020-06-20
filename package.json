@@ -1,6 +1,6 @@
 {
-  "name": "react-loading-typescript",
-  "version": "1.7.3-alpha.0",
+  "name": "react-loadingg",
+  "version": "1.7.4-alpha.0",
   "description": "this project will use typescript to build react-loading🏗",
   "main": "./lib/index.js",
   "scripts": {
