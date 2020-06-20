@@ -1,6 +1,6 @@
 {
   "name": "react-loading-typescript",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "this project will use typescript to build react-loading🏗",
   "main": "./lib/index.js",
   "scripts": {
@@ -8,9 +8,11 @@
     "recompile": "tsc",
     "prepublish": "npm run build",
     "storybook": "start-storybook -p 6006",
-    "build-storybook": "build-storybook -o docs"
+    "build-storybook": "build-storybook -o docs",
+    "release": "standard-version",
+    "release:alpha": "npm run release -- --prerelease alpha"
   },
-  "author": "andy",
+  "author": "Andy",
   "license": "MIT",
   "peerDependencies": {
     "react": "^16.8.6",
@@ -72,6 +74,7 @@
   "homepage": "https://github.com/Summer-andy/react-loading-typescript#README",
   "types": "./lib/index.d.ts",
   "dependencies": {
+    "standard-version": "^8.0.0",
     "styled-components": "^4.3.2"
   }
 }
