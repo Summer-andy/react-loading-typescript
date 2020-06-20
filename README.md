@@ -139,7 +139,7 @@ $ npm run release
 ##### 🛎 I just want to use ```BabelLoading```，but it seems that I have to `import` the whole `react-loadingg`:
 ##### Try[react-loading-demand](https://github.com/sixiaodong123/react-loading-demand), or load on demand in the following way
 ```
-import BabelLoading from 'react-loadingg/lib/BabelLoading'
+import BabelLoading from 'react-loadingg/lib/component/BabelLoading'
 ```
   
 ##### 🛎 The component is completely centered by default. If you want to modify the component's style, the component's default completely centered style will be overwritten.

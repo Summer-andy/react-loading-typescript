@@ -138,7 +138,7 @@ $ npm run release
 ##### 试试[react-loading-demand](https://github.com/sixiaodong123/react-loading-demand),或者用下面这种方式来按需加载
 
 ```
-import BabelLoading from 'react-loadingg/lib/BabelLoading'
+import BabelLoading from 'react-loadingg/lib/component/BabelLoading'
 ```
   
 ##### 🛎 组件默认完全居中, 如果你想修改组件的样式,那么组件默认的完全居中的样式会被覆盖。
