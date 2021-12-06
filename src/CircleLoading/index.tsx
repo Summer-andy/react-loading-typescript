@@ -1,16 +1,16 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle , sizeItem} from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const load = keyframes`
-  0%{
+  0% {
     opacity: 1;
     transform: scale(1);
   }
-  100%{
-      opacity: 0;
-      transform: rotate(90deg) scale(.3);
+  100% {
+    opacity: 0;
+    transform: rotate(90deg) scale(.3);
   }
 `;
 
@@ -22,7 +22,7 @@ const LoadingContainer = styled.div`
 const ItemSpan = styled.span`
   display: inline-block;
   height: ${props => sizeItem[props.size] || sizeItem['default']};
-  width: ${props => sizeItem[props.size]|| sizeItem['default']};
+  width: ${props => sizeItem[props.size] || sizeItem['default']};
   margin-top: 50%;
   margin-right: 5px;
   background: ${props => props.color || '#00adb5'};
@@ -45,15 +45,15 @@ const ItemSpan4 = styled(ItemSpan)`
   animation-delay: 0.8s;
 `;
 
-const CircleLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default' }) => {
-  return (
-    <LoadingContainer style={style}>
-      <ItemSpan1 color={color} speed={speed} size={size} />
-      <ItemSpan2 color={color} speed={speed} size={size} />
-      <ItemSpan3 color={color} speed={speed} size={size} />
-      <ItemSpan4 color={color} speed={speed} size={size} />
-    </LoadingContainer>
-  );
+const CircleLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadingContainer style={style}>
+            <ItemSpan1 color={color} speed={speed} size={size}/>
+            <ItemSpan2 color={color} speed={speed} size={size}/>
+            <ItemSpan3 color={color} speed={speed} size={size}/>
+            <ItemSpan4 color={color} speed={speed} size={size}/>
+        </LoadingContainer>
+    );
 };
 
 export default CircleLoading;

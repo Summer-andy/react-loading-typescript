@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const rotate = keyframes`
   100% {
@@ -79,18 +79,18 @@ const Mars = styled.div`
   top: ${props => props.size === 'small' ? 1 : (props.size === 'large' ? 3 : 2)}px;
 `
 
-const SolarSystemLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default' }) => {
-  return (
-    <LoadContainer style={style} size={size}>
-      <Sun color={color} size={size}/>
-      <FirstTrack color={color} speed={speed} size={size}>
-        <Earth color={color} size={size}/>
-      </FirstTrack>
-      <SecondTrack color={color} speed={speed} size={size}>
-        <Mars color={color} size={size}/>
-      </SecondTrack>
-    </LoadContainer>
-  );
+const SolarSystemLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style} size={size}>
+            <Sun color={color} size={size}/>
+            <FirstTrack color={color} speed={speed} size={size}>
+                <Earth color={color} size={size}/>
+            </FirstTrack>
+            <SecondTrack color={color} speed={speed} size={size}>
+                <Mars color={color} size={size}/>
+            </SecondTrack>
+        </LoadContainer>
+    );
 };
 
 export default SolarSystemLoading;

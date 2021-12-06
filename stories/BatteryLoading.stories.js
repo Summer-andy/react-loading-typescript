@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { storiesOf } from '@storybook/react';
-import { withKnobs } from '@storybook/addon-knobs';
-import { BatteryLoading } from '../src/index.ts';
+import {storiesOf} from '@storybook/react';
+import {withKnobs} from '@storybook/addon-knobs';
+import {BatteryLoading} from '../src/';
+
 storiesOf('BatteryLoading', module)
-  .addDecorator(withKnobs)
-  .add('BatteryLoading', () => {
-    return (
-      <BatteryLoading />
-    );
-  });
+    .addDecorator(withKnobs)
+    .add('BatteryLoading', () => {
+        return (
+            <BatteryLoading/>
+        );
+    });

@@ -1,13 +1,14 @@
-import  * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import * as React from 'react';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const animation = keyframes`
   0% {
     transform: scale(1);
   }
   50%,
-    75% {
+  75% {
     transform: scale(2.5);
   }
   78%, 100% {
@@ -30,16 +31,17 @@ const Item = styled.div`
   height: ${props => sizeItem[props.size] || sizeItem['default']};
   border-radius: 50%;
   background-color: ${props => props.color || '#00adb5'};
-  margin:  7px;
+  margin: 7px;
   display: flex;
   justify-content: center;
   align-items: center;
+
   &:before {
     content: '';
     width: ${props => sizeItem[props.size] || sizeItem['default']};
     height: ${props => sizeItem[props.size] || sizeItem['default']};
     border-radius: 50%;
-    background-color:  ${props => props.color || '#00adb5'};
+    background-color: ${props => props.color || '#00adb5'};
     opacity: 0.7;
     animation: ${animation} 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
     animation-delay: ${props => props.delay}ms;
@@ -48,15 +50,15 @@ const Item = styled.div`
   }
 `;
 
-const PointSpreadLoading: React.FC<LoadingInfo> = ({ speed, color, style = commonStyle, size = 'default' }) => {
-  return (
-    <Container style={style}>
-      <Item delay="250" speed={speed} color={color} size={size}></Item>
-      <Item delay="500" speed={speed} color={color} size={size}></Item>
-      <Item delay="750" speed={speed} color={color} size={size}></Item>
-      <Item delay="1000" speed={speed} color={color} size={size}></Item>
-    </Container>
-  );
+const PointSpreadLoading: React.FC<LoadingInfo> = ({speed, color, style = commonStyle, size = 'default'}) => {
+    return (
+        <Container style={style}>
+            <Item delay="250" speed={speed} color={color} size={size}/>
+            <Item delay="500" speed={speed} color={color} size={size}/>
+            <Item delay="750" speed={speed} color={color} size={size}/>
+            <Item delay="1000" speed={speed} color={color} size={size}/>
+        </Container>
+    );
 };
 
 export default PointSpreadLoading;

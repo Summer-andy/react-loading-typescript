@@ -1,12 +1,13 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const changeSharp = keyframes`
- 0%{
-   height: 0px;
-  },
-  100%{
+  0% {
+    height: 0px;
+  }
+  100% {
     height: 6px;
   }
 `;
@@ -14,9 +15,10 @@ const changeSharp = keyframes`
 const LoadContainer = styled.div`
   height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  border: 1px ${props => props.color || '#00adb5'}  solid;
+  border: 1px ${props => props.color || '#00adb5'} solid;
   border-radius: 0px 0px 5px 5px;
   position: relative;
+
   &::after {
     content: '';
     width: 5px;
@@ -28,6 +30,7 @@ const LoadContainer = styled.div`
     top: 4px;
     left: ${props => sizeContainer[props.size] || sizeContainer['default']};
   }
+
   &::before {
     content: '';
     width: 1px;
@@ -41,8 +44,8 @@ const LoadContainer = styled.div`
   }
 `;
 
-const CoffeeLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, size = 'default', speed }) => {
-  return <LoadContainer style={style} color={color} size={size} speed={speed}></LoadContainer>;
+const CoffeeLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, size = 'default', speed}) => {
+    return <LoadContainer style={style} color={color} size={size} speed={speed}/>;
 };
 
 export default CoffeeLoading;

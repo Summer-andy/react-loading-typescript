@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const bouncedelay = keyframes`
   0%,
   80%,
@@ -20,9 +21,9 @@ const LoadingContainer = styled.div`
 `;
 
 const load = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default'] };
-  height: ${props => sizeItem[props.size] || sizeItem['default'] };
-  margin-top: calc(50% -  ${props => sizeItem[props.size] || sizeItem['default'] } / 2);
+  width: ${props => sizeItem[props.size] || sizeItem['default']};
+  height: ${props => sizeItem[props.size] || sizeItem['default']};
+  margin-top: calc(50% - ${props => sizeItem[props.size] || sizeItem['default']} / 2);
   background-color: ${props => props.color || '#00adb5'};
   border-radius: 100%;
   display: inline-block;
@@ -43,14 +44,14 @@ const LoadThree = styled(load)`
 
 `
 
-const TransverseLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
-  return (
-    <LoadingContainer style={style}>
-        <LoadFirst color={color} size={size} speed={speed} />
-        <LoadTwo color={color} size={size} speed={speed} />
-        <LoadThree color={color} size={size} speed={speed} />
-    </LoadingContainer>
-  );
+const TransverseLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
+    return (
+        <LoadingContainer style={style}>
+            <LoadFirst color={color} size={size} speed={speed}/>
+            <LoadTwo color={color} size={size} speed={speed}/>
+            <LoadThree color={color} size={size} speed={speed}/>
+        </LoadingContainer>
+    );
 };
 
 export default TransverseLoading;

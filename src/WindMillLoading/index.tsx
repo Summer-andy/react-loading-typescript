@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const bouncedelay = keyframes`
   0% {
     transform: rotate(360deg);
@@ -64,7 +65,7 @@ const Center = styled.div`
   background: #fff;
   border-radius: 5px;
   transform: translateX(-3px) translateY(-4px);
-  position:absolute;
+  position: absolute;
 `;
 
 const Con = styled.div`
@@ -72,17 +73,17 @@ const Con = styled.div`
   animation: ${bouncedelay} ${props => props.speed || 5}s infinite linear;
 `;
 
-const WindMillLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
-  return (
-    <LoadingContainer style={style} color={color} size={size}>
-      <Center color={color} />
-      <Con speed={speed}>
-        <ItemFirst color={color} size={size} />
-        <ItemSecord color={color} size={size} />
-        <ItemThree color={color} size={size} />
-      </Con>
-    </LoadingContainer>
-  );
+const WindMillLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
+    return (
+        <LoadingContainer style={style} color={color} size={size}>
+            <Center color={color}/>
+            <Con speed={speed}>
+                <ItemFirst color={color} size={size}/>
+                <ItemSecord color={color} size={size}/>
+                <ItemThree color={color} size={size}/>
+            </Con>
+        </LoadingContainer>
+    );
 };
 
 export default WindMillLoading;
