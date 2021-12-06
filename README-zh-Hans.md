@@ -7,7 +7,7 @@
 <h1 align="center">一个基于 React 的 Loading 动画组件库</h1>
 <div align="center">
 
-[![npm version](https://img.shields.io/npm/v/react-loading)](https://www.npmjs.com/package/react-loadingg) [![](https://img.shields.io/github/license/sixiaodong123/react-loading)](https://github.com/sixiaodong123/react-loading/blob/master/LICENSE) [![](https://img.shields.io/npm/dm/react-loadingg)](https://www.npmjs.com/package/react-loadingg)
+[![npm version](https://img.shields.io/npm/v/react-loadingg)](https://www.npmjs.com/package/react-loadingg) [![](https://img.shields.io/github/license/sixiaodong123/react-loading)](https://github.com/sixiaodong123/react-loading/blob/master/LICENSE) [![](https://img.shields.io/npm/dm/react-loadingg)](https://www.npmjs.com/package/react-loadingg)
 
 [English](https://github.com/sixiaodong123/react-loading) &#124; 简体中文
 
