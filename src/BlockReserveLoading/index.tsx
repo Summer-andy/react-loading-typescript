@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../type';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeContainer } from '../util/style';
+import { LoadingInfo } from '../@types';
 
 const animate = keyframes`
   50% {
@@ -33,12 +33,17 @@ const Item = styled.div`
   animation: ${animate} ${props => props.speed || 1}s infinite;
 `;
 
-const BlockReserveLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
-    return (
-        <LoadingContainer style={style}>
-            <Item color={color} speed={speed} size={size}/>
-        </LoadingContainer>
-    );
+const BlockReserveLoading: React.FC<LoadingInfo> = ({
+  style = commonStyle,
+  color,
+  speed,
+  size = 'default'
+}) => {
+  return (
+    <LoadingContainer style={style}>
+      <Item color={color} speed={speed} size={size} />
+    </LoadingContainer>
+  );
 };
 
 export default BlockReserveLoading;
