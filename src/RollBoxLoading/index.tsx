@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const rollOne = keyframes`
   0%,
@@ -63,15 +63,15 @@ const moveLeft = keyframes`
 
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default'] };
-  height: ${props => sizeContainer[props.size] || sizeContainer['default'] };
+  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   position: relative;
   /* overflow: hidden; */
 `;
 
 const RollBoxOne = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem[props.size] };
-  height: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  width: ${props => sizeItem[props.size] || sizeItem[props.size]};
+  height: ${props => sizeItem[props.size] || sizeItem[props.size]};
   background-color: ${props => props.color || '#00adb5'};
   animation: ${rollOne} ${props => props.speed || 3}s ease infinite;
   position: absolute;
@@ -81,34 +81,34 @@ const RollBoxOne = styled.div`
 `
 
 const RollBoxTwo = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem[props.size] };
-  height: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  width: ${props => sizeItem[props.size] || sizeItem[props.size]};
+  height: ${props => sizeItem[props.size] || sizeItem[props.size]};
   background-color: ${props => props.color || '#00adb5'};
   animation: ${rollTwo} ${props => props.speed || 3}s ease infinite;
   position: absolute;
-  left: ${props => sizeItem[props.size] || sizeItem[props.size] };
-  bottom: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  left: ${props => sizeItem[props.size] || sizeItem[props.size]};
+  bottom: ${props => sizeItem[props.size] || sizeItem[props.size]};
   transform-origin: left bottom;
 `
 
 const RollBoxMove = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem[props.size] };
-  height: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  width: ${props => sizeItem[props.size] || sizeItem[props.size]};
+  height: ${props => sizeItem[props.size] || sizeItem[props.size]};
   background-color: ${props => props.color || '#00adb5'};
   animation: ${moveLeft} ${props => props.speed || 3}s ease infinite;
   position: absolute;
-  left: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  left: ${props => sizeItem[props.size] || sizeItem[props.size]};
   bottom: 0;
 `
 
-const RollBoxLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default'}) => {
-  return (
-    <LoadContainer style={style} size={size}>
-      <RollBoxOne size={size} color={color} speed={speed}/>
-      <RollBoxTwo size={size} color={color} speed={speed}/>
-      <RollBoxMove size={size} color={color} speed={speed}/>
-    </LoadContainer>
-  );
+const RollBoxLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style} size={size}>
+            <RollBoxOne size={size} color={color} speed={speed}/>
+            <RollBoxTwo size={size} color={color} speed={speed}/>
+            <RollBoxMove size={size} color={color} speed={speed}/>
+        </LoadContainer>
+    );
 };
 
 export default RollBoxLoading;

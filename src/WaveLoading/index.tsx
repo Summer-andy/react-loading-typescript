@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const stretchdelay = keyframes`
   0%,
   40%,
@@ -49,16 +50,16 @@ const BoxLoadingFive = styled(box)`
   animation-delay: -0.8s;
 `;
 
-const WaveLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
-  return (
-    <LoadContainer style={style} size={size}>
-      <BoxLoadingFirst color={color} speed={speed} />
-      <BoxLoadingTwo color={color} speed={speed} />
-      <BoxLoadingThree color={color} speed={speed} />
-      <BoxLoadingFour color={color} speed={speed} />
-      <BoxLoadingFive color={color} speed={speed} />
-    </LoadContainer>
-  );
+const WaveLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
+    return (
+        <LoadContainer style={style} size={size}>
+            <BoxLoadingFirst color={color} speed={speed}/>
+            <BoxLoadingTwo color={color} speed={speed}/>
+            <BoxLoadingThree color={color} speed={speed}/>
+            <BoxLoadingFour color={color} speed={speed}/>
+            <BoxLoadingFive color={color} speed={speed}/>
+        </LoadContainer>
+    );
 };
 
 export default WaveLoading;

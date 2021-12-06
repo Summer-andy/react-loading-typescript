@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const gradualShowDispear = keyframes`
   0% {
@@ -57,32 +57,41 @@ const RectSmallWrap = styled.div`
   z-index: 1;
   left: 0;
   top: 0;
-  >div {
+
+  > div {
     animation: ${gradualShowDispear} ${props => props.speed || 4}s ease-in-out infinite;
   }
-  >div:nth-of-type(8) {
+
+  > div:nth-of-type(8) {
     animation-delay: 0s;
   }
-  >div:nth-of-type(7) {
-    animation-delay: ${props => props.speed/16*1 || 4/16*1}s;
+
+  > div:nth-of-type(7) {
+    animation-delay: ${props => props.speed / 16 * 1 || 4 / 16 * 1}s;
   }
-  >div:nth-of-type(6) {
-    animation-delay: ${props => props.speed/16*2 || 4/16*2}s;
+
+  > div:nth-of-type(6) {
+    animation-delay: ${props => props.speed / 16 * 2 || 4 / 16 * 2}s;
   }
-  >div:nth-of-type(5) {
-    animation-delay: ${props => props.speed/16*3 || 4/16*3}s;
+
+  > div:nth-of-type(5) {
+    animation-delay: ${props => props.speed / 16 * 3 || 4 / 16 * 3}s;
   }
-  >div:nth-of-type(4) {
-    animation-delay: ${props => props.speed/16*4 || 4/16*4}s;
+
+  > div:nth-of-type(4) {
+    animation-delay: ${props => props.speed / 16 * 4 || 4 / 16 * 4}s;
   }
-  >div:nth-of-type(3) {
-    animation-delay: ${props => props.speed/16*5 || 4/16*5}s;
+
+  > div:nth-of-type(3) {
+    animation-delay: ${props => props.speed / 16 * 5 || 4 / 16 * 5}s;
   }
-  >div:nth-of-type(2) {
-    animation-delay: ${props => props.speed/16*6 || 4/16*6}s;
+
+  > div:nth-of-type(2) {
+    animation-delay: ${props => props.speed / 16 * 6 || 4 / 16 * 6}s;
   }
-  >div:nth-of-type(1) {
-    animation-delay: ${props => props.speed/16*7 || 4/16*7}s;
+
+  > div:nth-of-type(1) {
+    animation-delay: ${props => props.speed / 16 * 7 || 4 / 16 * 7}s;
   }
 `
 
@@ -92,17 +101,19 @@ const RectSmall = styled.div`
   background-color: ${props => props.color || '#00adb5'};
 `
 
-const RectGraduallyShowLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default'}) => {
-  return (
-    <LoadContainer style={style} speed={speed} color={color} size={size}>
-      {/* <RectBig speed={speed} color={color} size={size} /> */}
-      <RectSmallWrap>
-        {
-          Array.from(Array(8)).map((item, index) => <RectSmall speed={speed} color={color} size={size} key={index}/>)
-        }
-      </RectSmallWrap>
-    </LoadContainer>
-  );
+const RectGraduallyShowLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style} speed={speed} color={color} size={size}>
+            {/* <RectBig speed={speed} color={color} size={size} /> */}
+            <RectSmallWrap>
+                {
+                    Array.from(Array(8)).map((item, index) => (
+                        <RectSmall speed={speed} color={color} size={size} key={index}/>
+                    ))
+                }
+            </RectSmallWrap>
+        </LoadContainer>
+    );
 };
 
 export default RectGraduallyShowLoading;

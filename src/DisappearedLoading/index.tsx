@@ -1,7 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const animate = keyframes`
   from {
     opacity: 1;
@@ -21,7 +22,7 @@ const LoadingContainer = styled.div`
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size]  || sizeItem['default']};
+  width: ${props => sizeItem[props.size] || sizeItem['default']};
   height: ${props => sizeItem[props.size] || sizeItem['default']};
   border-radius: 50%;
   background: ${props => props.color || '#00adb5'};
@@ -33,17 +34,17 @@ const ItemFirst = styled(Item)`
 `;
 
 const ItemTwo = styled(Item)`
-  animation-delay:  -${props => props.speed / 4 || 0.2}s;
+  animation-delay: -${props => props.speed / 4 || 0.2}s;
 `;
 
-const Disappearedloading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
-  return (
-    <LoadingContainer style={style}>
-      <ItemFirst color={color} speed={speed} size={size} />
-      <ItemTwo color={color} speed={speed}  size={size} />
-      <Item color={color} speed={speed}  size={size} />
-    </LoadingContainer>
-  );
+const Disappearedloading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
+    return (
+        <LoadingContainer style={style}>
+            <ItemFirst color={color} speed={speed} size={size}/>
+            <ItemTwo color={color} speed={speed} size={size}/>
+            <Item color={color} speed={speed} size={size}/>
+        </LoadingContainer>
+    );
 };
 
 export default Disappearedloading;

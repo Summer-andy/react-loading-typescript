@@ -1,20 +1,21 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer} from '../util/style';
+import {LoadingInfo} from '../type';
+
 const animate1 = keyframes`
-	100% {
-	transform:rotate(360deg)
-}
+  100% {
+    transform: rotate(360deg)
+  }
 `;
 
 const animate2 = keyframes`
-	0%,100% {
-	transform:scale(0)
-}
-50% {
-	transform:scale(1)
-}
+  0%, 100% {
+    transform: scale(0)
+  }
+  50% {
+    transform: scale(1)
+  }
 `;
 
 const LoadingContainer = styled.div`
@@ -26,30 +27,30 @@ const LoadingContainer = styled.div`
 `;
 
 const Item = styled.div`
-	position:absolute;
-	top:0;
-	width:25px;
-	height:25px;
-	border-radius:100%;
-	background-color: ${props => props.color || '#00adb5'};
+  position: absolute;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: ${props => props.color || '#00adb5'};
   animation: ${animate2} ${props => props.speed || 2}s ease-in-out infinite;
 `;
 
 const ItemOne = styled(Item)``;
 
 const ItemTwo = styled(Item)`
-  animation-delay: -${props => props.speed  / 2 || 1}s;
-  top:auto;
-	bottom:0;
+  animation-delay: -${props => props.speed / 2 || 1}s;
+  top: auto;
+  bottom: 0;
 `;
 
-const BlockRotateLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default' }) => {
-  return (
-    <LoadingContainer style={style}>
-      <ItemOne color={color} speed={speed} />
-      <ItemTwo color={color} speed={speed} />
-    </LoadingContainer>
-  );
+const BlockRotateLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadingContainer style={style}>
+            <ItemOne color={color} speed={speed}/>
+            <ItemTwo color={color} speed={speed}/>
+        </LoadingContainer>
+    );
 };
 
 export default BlockRotateLoading;

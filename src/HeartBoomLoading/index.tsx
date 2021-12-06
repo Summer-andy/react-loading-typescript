@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const boom = keyframes`
   0% {
@@ -23,8 +23,8 @@ const boom = keyframes`
 
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default'] };
-  height: ${props => sizeContainer[props.size] || sizeContainer['default'] };
+  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   position: relative;
   display: flex;
   align-items: center;
@@ -33,12 +33,13 @@ const LoadContainer = styled.div`
 `;
 
 const Heart = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem[props.size] };
-  height: ${props => sizeItem[props.size] || sizeItem[props.size] };
+  width: ${props => sizeItem[props.size] || sizeItem[props.size]};
+  height: ${props => sizeItem[props.size] || sizeItem[props.size]};
   background-color: ${props => props.color || '#00adb5'};
   position: relative;
   transform: rotate(45deg);
   animation: ${boom} ${props => props.speed || 2}s ease infinite;
+
   &::before {
     content: '';
     width: 100%;
@@ -49,6 +50,7 @@ const Heart = styled.div`
     left: -50%;
     bottom: 0;
   }
+
   &::after {
     content: '';
     width: 100%;
@@ -61,12 +63,12 @@ const Heart = styled.div`
   }
 `
 
-const HeartBoomLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default'}) => {
-  return (
-    <LoadContainer style={style} size={size}>
-      <Heart color={color} speed={speed} size={size}/>
-    </LoadContainer>
-  );
+const HeartBoomLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style} size={size}>
+            <Heart color={color} speed={speed} size={size}/>
+        </LoadContainer>
+    );
 };
 
 export default HeartBoomLoading;

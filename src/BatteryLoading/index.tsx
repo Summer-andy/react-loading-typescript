@@ -1,11 +1,15 @@
 import * as React from "react";
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const changeSharp = (color, size) => keyframes`
-    0%{box-shadow: inset 0px 0px 0px ${color};}
-    100%{box-shadow: inset ${size} 0px 0px ${color}}
+  0% {
+    box-shadow: inset 0px 0px 0px ${color};
+  }
+  100% {
+    box-shadow: inset ${size} 0px 0px ${color}
+  }
 `;
 
 const LoadContainer = styled.div`
@@ -15,8 +19,8 @@ const LoadContainer = styled.div`
   border-radius: 2px;
   position: relative;
   animation: ${props =>
-      changeSharp(props.color || '#00adb5', sizeContainer[props.size] || sizeContainer['default'])}
-    ${props => props.speed || 4}s linear infinite;
+          changeSharp(props.color || '#00adb5', sizeContainer[props.size] || sizeContainer['default'])} ${props => props.speed || 4}s linear infinite;
+
   &::after {
     width: 2px;
     height: 7px;
@@ -29,8 +33,8 @@ const LoadContainer = styled.div`
   }
 `;
 
-const BatteryLoading : React.FC<LoadingInfo> = ({ style = commonStyle, color, size = 'default', speed }) => {
-  return <LoadContainer style={style} color={color} size={size} speed={speed}></LoadContainer>;
+const BatteryLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, size = 'default', speed}) => {
+    return <LoadContainer style={style} color={color} size={size} speed={speed}/>;
 };
 
 export default BatteryLoading;

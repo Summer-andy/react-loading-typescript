@@ -1,7 +1,7 @@
-import  * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import * as React from 'react';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const bounce = keyframes`
   0% {
@@ -17,8 +17,8 @@ const bounce = keyframes`
 `;
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default'] };
-  height: ${props => sizeContainer[props.size] || sizeContainer['default'] };
+  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   position: relative;
   /* overflow: hidden; */
   display: flex;
@@ -27,30 +27,30 @@ const LoadContainer = styled.div`
 `;
 
 const Circle = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default'] };
-  height: ${props => sizeItem[props.size] || sizeItem['default'] };
+  width: ${props => sizeItem[props.size] || sizeItem['default']};
+  height: ${props => sizeItem[props.size] || sizeItem['default']};
   border-radius: 50%;
-  background-color: ${props => props.color || '#00adb5' };
+  background-color: ${props => props.color || '#00adb5'};
   animation: ${bounce} ${props => props.speed || 0.5}s ease-out infinite alternate;
 `;
 
 const BottomReac = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default'] };
+  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
   height: 4px;
   position: absolute;
   bottom: 0;
   left: 0;
-  background-color: ${props => props.color || '#00adb5' };
+  background-color: ${props => props.color || '#00adb5'};
 `
 
 
-const JumpCircleLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default'}) => {
-  return (
-    <LoadContainer style={style} size={size}>
-      <Circle color={color} speed={speed} size={size}/>
-      <BottomReac color={color} size={size}/>
-    </LoadContainer>
-  );
+const JumpCircleLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style} size={size}>
+            <Circle color={color} speed={speed} size={size}/>
+            <BottomReac color={color} size={size}/>
+        </LoadContainer>
+    );
 };
 
 export default JumpCircleLoading;

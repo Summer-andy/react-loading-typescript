@@ -1,15 +1,15 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const load = keyframes`
- 0% {
- top: 19px;
- left: 19px;
-}
- 100% {
-}
+  0% {
+    top: 19px;
+    left: 19px;
+  }
+  100% {
+  }
 `;
 
 const Container = styled.div`
@@ -26,6 +26,7 @@ const ItemDiv = styled.div`
   position: absolute;
   animation: ${load} ${props => props.speed || 1}s ease alternate infinite;
   transform: scale(0.2);
+
   &::before {
     position: absolute;
     content: '';
@@ -33,11 +34,12 @@ const ItemDiv = styled.div`
     top: 0;
     width: 50px;
     height: 80px;
-    background: ${props => props.color || '#00adb5'} ;
+    background: ${props => props.color || '#00adb5'};
     border-radius: 50px 50px 0 0;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
   }
+
   &::after {
     position: absolute;
     content: '';
@@ -45,7 +47,7 @@ const ItemDiv = styled.div`
     top: 0;
     width: 50px;
     height: 80px;
-    background:${props => props.color || '#00adb5'} ;
+    background: ${props => props.color || '#00adb5'};
     border-radius: 50px 50px 0 0;
     left: 0;
     transform: rotate(45deg);
@@ -73,15 +75,15 @@ const ItemFour = styled(ItemDiv)`
   top: 30px;
 `;
 
-const DiamonLoading: React.FC<LoadingInfo> = ({ style = commonStyle, speed, color }) => {
-  return (
-    <Container {...{ style, speed, color }}>
-      <ItemFirst color={color} speed={speed} />
-      <ItemTwo color={color} speed={speed} />
-      <ItemThree color={color} speed={speed} />
-      <ItemFour color={color} speed={speed} />
-    </Container>
-  );
+const DiamonLoading: React.FC<LoadingInfo> = ({style = commonStyle, speed, color}) => {
+    return (
+        <Container {...{style, speed, color}}>
+            <ItemFirst color={color} speed={speed}/>
+            <ItemTwo color={color} speed={speed}/>
+            <ItemThree color={color} speed={speed}/>
+            <ItemFour color={color} speed={speed}/>
+        </Container>
+    );
 };
 
 export default DiamonLoading;

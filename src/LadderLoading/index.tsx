@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled, {keyframes} from 'styled-components';
+import {commonStyle, sizeContainer, sizeItem} from '../util/style';
+import {LoadingInfo} from '../type';
 
 const leftLadderMove = keyframes`
   0% {
@@ -18,7 +18,7 @@ const leftLadderMove = keyframes`
 `;
 
 const rightLadderMove = keyframes`
-  0%, 
+  0%,
   40% {
     transform: translateY(68px);
   }
@@ -32,7 +32,7 @@ const rightLadderMove = keyframes`
 `;
 
 const RowLadderOneMove = keyframes`
-  0%, 
+  0%,
   10% {
     transform: translateY(68px);
   }
@@ -47,7 +47,7 @@ const RowLadderOneMove = keyframes`
 `;
 
 const RowLadderTwoMove = keyframes`
-  0%, 
+  0%,
   20% {
     transform: translateY(68px);
   }
@@ -62,7 +62,7 @@ const RowLadderTwoMove = keyframes`
 `;
 
 const RowLadderThreeMove = keyframes`
-  0%, 
+  0%,
   30% {
     transform: translateY(68px);
   }
@@ -85,10 +85,10 @@ const LoadContainer = styled.div`
 
 const LeftLadder = styled.div`
   height: 0;
-	width: 1px;
-	border-bottom: ${props => props.size === 'small' ? 60 : (props.size === 'large' ? 68 : 64)}px solid ${props => props.color || '#00adb5'};
-	border-left: 1px solid transparent;
-	border-right: 1px solid transparent;
+  width: 1px;
+  border-bottom: ${props => props.size === 'small' ? 60 : (props.size === 'large' ? 68 : 64)}px solid ${props => props.color || '#00adb5'};
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   position: absolute;
   left: 0;
   bottom: 0;
@@ -97,10 +97,10 @@ const LeftLadder = styled.div`
 
 const RightLadder = styled.div`
   height: 0;
-	width: 1px;
-	border-bottom: ${props => props.size === 'small' ? 60 : (props.size === 'large' ? 68 : 64)}px solid ${props => props.color || '#00adb5'};
-	border-left: 1px solid transparent;
-	border-right: 1px solid transparent;
+  width: 1px;
+  border-bottom: ${props => props.size === 'small' ? 60 : (props.size === 'large' ? 68 : 64)}px solid ${props => props.color || '#00adb5'};
+  border-left: 1px solid transparent;
+  border-right: 1px solid transparent;
   position: absolute;
   right: 0;
   bottom: 0;
@@ -140,16 +140,16 @@ const RowLadderThree = styled.div`
   animation: ${RowLadderThreeMove} ${props => props.speed || 4}s ease infinite;
 `
 
-const LadderLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default'}) => {
-  return (
-    <LoadContainer style={style}>
-      <LeftLadder color={color} speed={speed} size={size}/>
-      <RightLadder color={color} speed={speed} size={size}/>
-      <RowLadderOne color={color} speed={speed} size={size}/>
-      <RowLadderTwo color={color} speed={speed} size={size}/>
-      <RowLadderThree color={color} speed={speed} size={size}/>
-    </LoadContainer>
-  );
+const LadderLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
+    return (
+        <LoadContainer style={style}>
+            <LeftLadder color={color} speed={speed} size={size}/>
+            <RightLadder color={color} speed={speed} size={size}/>
+            <RowLadderOne color={color} speed={speed} size={size}/>
+            <RowLadderTwo color={color} speed={speed} size={size}/>
+            <RowLadderThree color={color} speed={speed} size={size}/>
+        </LoadContainer>
+    );
 };
 
 export default LadderLoading;

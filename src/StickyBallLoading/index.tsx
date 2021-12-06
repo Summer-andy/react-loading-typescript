@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
 import { commonStyle, sizeContainer, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import { LoadingInfo } from '../type';
 
 const fly = keyframes`
   0% {

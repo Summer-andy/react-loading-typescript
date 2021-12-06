@@ -1,4 +1,4 @@
-import  { keyframes } from 'styled-components';
+import {keyframes} from 'styled-components';
 
 const shadow = keyframes`
   17% {
@@ -29,4 +29,4 @@ const animate = keyframes`
   }
 `
 
-export { shadow, animate }
+export {shadow, animate}
