@@ -2,7 +2,7 @@ import * as React from 'react';
 import styled from 'styled-components';
 import {shadow, animate} from './animate';
 import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../type';
+import {LoadingInfo} from '../@types';
 
 const LoadContainer = styled.div`
   width: ${props => sizeContainer[props.size] || sizeContainer['default']};

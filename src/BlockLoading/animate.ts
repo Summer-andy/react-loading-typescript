@@ -1,6 +1,8 @@
-import  { keyframes } from 'styled-components';
+import { keyframes } from 'styled-components';
+
 const $InColor = '#f9c094';
 const $color = '#00adb5';
+
 const Rotate = keyframes`
   0% {
     transform: rotate(0deg);
@@ -35,9 +37,9 @@ const animateFirst = color => keyframes`
   100% {
     background: ${$InColor};
   }
-`
+`;
 
-const animateTwo = color =>  keyframes`
+const animateTwo = color => keyframes`
   0% {
     background: ${color};
   }
@@ -53,9 +55,9 @@ const animateTwo = color =>  keyframes`
   100% {
     background: ${color};
   }
-`
+`;
 
-const animateThree = color =>  keyframes`
+const animateThree = color => keyframes`
   0% {
     background: ${color};
   }
@@ -71,8 +73,8 @@ const animateThree = color =>  keyframes`
   100% {
     background: ${color};
   }
-`
-const animateFour = color =>  keyframes`
+`;
+const animateFour = color => keyframes`
   0% {
     background: ${color};
   }
@@ -88,6 +90,6 @@ const animateFour = color =>  keyframes`
   100% {
     background: ${color};
   }
-`
+`;
 
-export { Rotate, animateFirst, animateTwo, animateThree, animateFour }
+export { Rotate, animateFirst, animateTwo, animateThree, animateFour };

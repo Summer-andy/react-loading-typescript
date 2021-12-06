@@ -1,35 +1,28 @@
-import * as React from "react";
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer, borderRadiusContainerSize} from '../util/style';
-import {LoadingInfo} from '../type';
-
-const animation = keyframes`
-  0% {
-    -webkit-transform: scale(0.1);
-    opacity: 1;
-  }
-  50% {
-    -webkit-transform: scale(1);
-    opacity: 0.5;
-  }
-  100% {
-    -webkit-transform: scale(1.5);
-    opacity: 0.1;
-  }
-`
+import * as React from 'react';
+import styled from 'styled-components';
+import { LoadingInfo } from '../@types';
+import {
+  commonStyle,
+  sizeContainer,
+  borderRadiusContainerSize
+} from '../config';
+import { animation } from './animation';
 
 const Container = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  border-radius: ${props => borderRadiusContainerSize[props.size] || borderRadiusContainerSize['default']};
-  background: ${props => props.color || '#00adb5'};
-  animation: ${animation} ${props => props.speed || 2}s linear infinite;
-`
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
+  border-radius: ${({ size }) => borderRadiusContainerSize[size]};
+  background: ${({ color }) => color};
+  animation: ${animation} ${({ speed }) => speed}s linear infinite;
+`;
 
-const BabelLoading: React.FC<LoadingInfo> = ({style = commonStyle, speed, color, size = 'default'}) => {
-    return (
-        <Container {...{style, speed, color, size}} />
-    );
+const BabelLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  color = '#00adb5',
+  size = 'default',
+  style = commonStyle
+}) => {
+  return <Container {...{ style, speed, color, size }} />;
 };
 
 export default BabelLoading;

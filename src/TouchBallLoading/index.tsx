@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, {keyframes} from 'styled-components';
 import {commonStyle, sizeItem} from "../util/style";
-import {LoadingInfo} from '../type';
+import {LoadingInfo} from '../@types';
 
 const leftAnimate = keyframes`
   50%,
