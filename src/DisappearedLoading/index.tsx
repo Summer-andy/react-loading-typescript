@@ -1,32 +1,24 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
 import { createLoading } from '../utils';
-
-const animate = keyframes`
-  from {
-    opacity: 1;
-  }
-  to {
-    opacity: 0;
-  }
-`;
+import { animate } from './animate';
 
 const LoadingContainer = styled.div`
   width: 60px;
   height: 60px;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
   flex-flow: nowrap;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size]};
-  height: ${props => sizeItem[props.size]};
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
   border-radius: 50%;
-  background: ${props => props.color || '#00adb5'};
-  animation: ${animate} ${props => props.speed}s ease-in-out alternate infinite;
+  background: ${({ color }) => color};
+  animation: ${animate} ${props => props.speed}s ease-in-out infinite alternate;
 `;
 
 const ItemFirst = styled(Item)`

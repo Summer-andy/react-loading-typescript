@@ -1,51 +1,33 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
 import { createLoading } from '../utils';
-
-const load = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  100% {
-    transform: rotate(-360deg);
-  }
-`;
+import { load } from './animate';
 
 const Container = styled.div`
-  position: absolute;
   width: 60px;
   height: 60px;
   border-radius: 50%;
-  margin: 75px;
   display: inline-block;
   vertical-align: middle;
-  border: 8px dotted ${props => props.color || '#00adb5'};
+  border-style: dotted;
+  border-color: ${({ color }) => color};
+  border-width: 3px 2px 1px 4px;
   transition: all 1s ease;
   animation: ${load} ${props => props.speed}s linear infinite;
-  border-bottom-width: 1px;
-  border-bottom-color: ${props => props.color || '#00adb5'};
-  border-left-width: 2px;
-  border-left-color: ${props => props.color || '#00adb5'};
-  border-top-width: 3px;
-  border-right-width: 4px;
-  border-top-color: ${props => props.color || '#00adb5'};
 `;
 
 const ItemDiv = styled.div`
   position: absolute;
   top: 45px;
   left: 25px;
-  width: 0px;
-  height: 0px;
+  width: 0;
+  height: 0;
   border-right: 12px solid transparent;
-  border-top: 12px solid ${props => props.color || '#00adb5'};
-  border-left: 12px solid ${props => props.color || '#00adb5'};
-  border-bottom: 12px solid ${props => props.color || '#00adb5'};
-  border-top-left-radius: 12px;
-  border-top-right-radius: 12px;
-  border-bottom-left-radius: 12px;
-  border-bottom-right-radius: 12px;
+  border-top: 12px solid ${({ color }) => color};
+  border-left: 12px solid ${({ color }) => color};
+  border-bottom: 12px solid ${({ color }) => color};
+  border-radius: 12px;
 `;
 
 // TODO size 参数未生效
@@ -57,4 +39,4 @@ const EatLoading = ({ speed, size, style, color }) => {
   );
 };
 
-export default createLoading(EatLoading)(1);
+export default createLoading(EatLoading)(2);

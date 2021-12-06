@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 
-export const animation = keyframes`
+const animation = keyframes`
   0% {
     -webkit-transform: scale(0.1);
     opacity: 1;
@@ -14,3 +14,5 @@ export const animation = keyframes`
     opacity: 0.1;
   }
 `;
+
+export { animation };

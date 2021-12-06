@@ -1,27 +1,16 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer } from '../config';
-import { createLoading } from '../utils';
-
-const changeSharp = keyframes`
-  0% {
-    transform: translateX(-50%) rotate(45deg) scale(0);
-  }
-  50% {
-    transform: translateX(125%) rotate(45deg) scale(1);
-  }
-  100% {
-    transform: translateX(300%) rotate(45deg) scale(0);
-  }
-`;
+import { createAnimation, createLoading } from '../utils';
+import { changeSharp } from './animate';
 
 const LoadContainer = styled.div`
-  height: 100px;
   width: 100px;
+  height: 100px;
   display: flex;
-  justify-content: space-between;
   flex-wrap: nowrap;
   align-items: center;
+  justify-content: space-between;
 `;
 
 const Item = styled.div`
@@ -32,7 +21,7 @@ const Item = styled.div`
   margin: auto;
   border-radius: 2px;
   transform: translateY(0) rotate(45deg) scale(0);
-  animation: ${changeSharp} ${({ speed }) => speed}s linear infinite;
+  animation: ${changeSharp} ${({ speed }) => createAnimation(speed)};
 `;
 
 const ItemFirst = styled(Item)`

@@ -1,16 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
 import { createLoading } from '../utils';
-
-const load = keyframes`
-  0% {
-    top: 19px;
-    left: 19px;
-  }
-  100% {
-  }
-`;
+import { load } from './animate';
 
 const Container = styled.div`
   position: relative;
@@ -18,7 +10,6 @@ const Container = styled.div`
   height: 60px;
   border-radius: 50%;
   margin: 75px;
-  display: inline-block;
   vertical-align: middle;
 `;
 
@@ -28,28 +19,27 @@ const ItemDiv = styled.div`
   transform: scale(0.2);
 
   &::before {
-    position: absolute;
     content: '';
+    position: absolute;
     left: 50px;
     top: 0;
     width: 50px;
     height: 80px;
-    background: ${props => props.color || '#00adb5'};
+    background: ${({ color }) => color};
     border-radius: 50px 50px 0 0;
     transform: rotate(-45deg);
     transform-origin: 0 100%;
   }
 
   &::after {
-    position: absolute;
     content: '';
-    left: 50px;
+    position: absolute;
+    left: 0;
     top: 0;
     width: 50px;
     height: 80px;
-    background: ${props => props.color || '#00adb5'};
+    background: ${({ color }) => color};
     border-radius: 50px 50px 0 0;
-    left: 0;
     transform: rotate(45deg);
     transform-origin: 100% 100%;
   }

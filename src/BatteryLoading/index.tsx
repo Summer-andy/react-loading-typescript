@@ -11,7 +11,7 @@ const LoadContainer = styled.div`
   border-radius: 2px;
   position: relative;
   animation: ${({ color, size }) => changeSharp(color, sizeContainer[size])}
-    ${({ speed }) => speed}s linear infinite;
+    ${({ speed }) => createAnimation(speed)};
 
   &::after {
     content: '';

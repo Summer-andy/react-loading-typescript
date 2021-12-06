@@ -1,21 +1,13 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer } from '../config';
-import { createLoading } from '../utils';
-
-const animate = keyframes`
-  50% {
-    transform: rotateY(-180deg);
-  }
-  100% {
-    transform: rotateY(-180deg) rotateX(-180deg);
-  }
-`;
+import { createLoading, createAnimation } from '../utils';
+import { animate } from './animate';
 
 const LoadingContainer = styled.div`
-  perspective: 120px;
   width: 120px;
   height: 120px;
+  perspective: 120px;
   position: relative;
 `;
 
@@ -30,7 +22,7 @@ const Item = styled.div`
   height: ${({ size }) => sizeContainer[size]};
   transform: rotate(0);
   background: ${({ color }) => color};
-  animation: ${animate} ${({ speed }) => speed}s infinite;
+  animation: ${animate} ${({ speed }) => createAnimation(speed, 'ease')};
 `;
 
 const BlockReserveLoading = ({ speed, size, style, color }) => {

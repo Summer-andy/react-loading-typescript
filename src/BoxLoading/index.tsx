@@ -1,36 +1,36 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import { shadow, animate } from './animate';
 import { sizeContainer } from '../config';
-import { createLoading } from '../utils';
+import { createLoading, createAnimation } from '../utils';
+import { shadow, animate } from './animate';
 
 const LoadContainer = styled.div`
   width: ${({ size }) => sizeContainer[size]};
   height: ${({ size }) => sizeContainer[size]};
 
-  &:before {
+  &::before {
     content: '';
-    width: ${({ size }) => sizeContainer[size]};
-    height: 5px;
-    background: #000;
-    opacity: 0.1;
     position: absolute;
     top: calc(${({ size }) => sizeContainer[size]} + 10px);
     left: 0;
+    width: ${({ size }) => sizeContainer[size]};
+    height: 5px;
     border-radius: 50%;
-    animation: ${animate} ${({ speed }) => speed}s linear infinite;
+    background: #000;
+    opacity: 0.1;
+    animation: ${animate} ${({ speed }) => createAnimation(speed)};
   }
 
-  &:after {
+  &::after {
     content: '';
-    width: ${({ size }) => sizeContainer[size]};
-    height: ${({ size }) => sizeContainer[size]};
-    background: ${({ color }) => color};
-    animation: ${shadow} ${({ speed }) => speed}s linear infinite;
     position: absolute;
     top: 0;
     left: 0;
+    width: ${({ size }) => sizeContainer[size]};
+    height: ${({ size }) => sizeContainer[size]};
     border-radius: 3px;
+    background: ${({ color }) => color};
+    animation: ${shadow} ${({ speed }) => createAnimation(speed)};
   }
 `;
 

@@ -1,22 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer } from '../config';
 import { createLoading } from '../utils';
-
-const animate1 = keyframes`
-  100% {
-    transform: rotate(360deg)
-  }
-`;
-
-const animate2 = keyframes`
-  0%, 100% {
-    transform: scale(0)
-  }
-  50% {
-    transform: scale(1)
-  }
-`;
+import { animate1, animate2 } from './animate';
 
 const LoadingContainer = styled.div`
   position: relative;
@@ -36,10 +22,12 @@ const Item = styled.div`
   animation: ${animate2} ${({ speed }) => speed}s ease-in-out infinite;
 `;
 
+//TODO 可以考虑转换为伪元素
+
 const ItemOne = styled(Item)``;
 
 const ItemTwo = styled(Item)`
-  animation-delay: -${props => props.speed / 2 || 1}s;
+  animation-delay: -${props => props.speed / 2}s;
   top: auto;
   bottom: 0;
 `;
