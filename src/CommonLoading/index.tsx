@@ -1,33 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const load = keyframes`
-  0% {
-    transform: rotate(0deg);
-  }
-  10% {
-    transform: rotate(45deg);
-  }
-  50% {
-    opacity: 1;
-    transform: rotate(160deg);
-  }
-  62% {
-    opacity: 0;
-  }
-  65% {
-    opacity: 0;
-    transform: rotate(200deg);
-  }
-  90% {
-    transform: rotate(340deg);
-  } 
-  100% {
-    transform: rotate(360deg);
-  }
-`;
+import { createAnimation, createLoading } from '../utils';
+import { load } from './animate';
 
 const Container = styled.div`
   width: 50px;
@@ -35,10 +10,10 @@ const Container = styled.div`
 `;
 
 const ItemDiv = styled.div`
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  animation: ${load} ${({ speed }) => speed}s linear infinite;
+  animation: ${load} ${({ speed }) => createAnimation(speed)};
 `;
 
 const ItemDiv1 = styled(ItemDiv)`
@@ -58,15 +33,14 @@ const ItemDiv4 = styled(ItemDiv)`
 `;
 
 const ItemSpan = styled.span`
-  display: inline-block;
-  height: ${({ size }) => sizeItem[size]};
-  width: ${({ size }) => sizeItem[size]};
-  border-radius: 50%;
-  background: ${({ color }) => color};
   position: absolute;
   left: 50%;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  border-radius: 50%;
   margin-top: -10px;
   margin-left: -10px;
+  background: ${({ color }) => color};
 `;
 
 const CommonLoading = ({ speed, size, style, color }) => {

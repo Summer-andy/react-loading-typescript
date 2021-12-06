@@ -20,6 +20,6 @@ export const createLoading = (Loading: FC<LoadingInfo>) => {
   };
 };
 
-export const createAnimation = (speed: number) => {
-  return `${speed}s linear infinite`;
+export const createAnimation = (speed: number, timingFunction = 'linear') => {
+  return `${speed}s ${timingFunction} infinite`;
 };

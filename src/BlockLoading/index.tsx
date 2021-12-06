@@ -1,5 +1,7 @@
 import * as React from 'react';
 import styled from 'styled-components';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading, createAnimation } from '../utils';
 import {
   Rotate,
   animateFirst,
@@ -7,52 +9,51 @@ import {
   animateThree,
   animateFour
 } from './animate';
-import { sizeContainer, sizeItem } from '../config';
-import { createLoading } from '../utils';
 
 const LoadContainer = styled.div`
-  width: ${({ size }) => sizeContainer[size]};
-  height: ${({ size }) => sizeContainer[size]};
   display: flex;
-  justify-content: space-between;
   flex-wrap: wrap;
   align-items: center;
-  animation: ${Rotate} ${({ speed }) => speed}s infinite ease-in-out;
+  justify-content: space-between;
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
+  animation: ${Rotate} ${({ speed }) => createAnimation(speed, 'ease-in-out')};
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size]};
-  height: ${props => sizeItem[props.size]};
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
   margin: auto;
 `;
 
 const ItemFirst = styled(Item)`
-  animation: ${props => animateFirst(props.color)}
-    ${props => props.speed / 4 || 2}s infinite ease-in-out;
+  animation: ${({ color }) => animateFirst(color)}
+    ${({ speed }) => createAnimation(speed / 4, 'ease-in-out')};
 `;
 
 const ItemTwo = styled(Item)`
-  animation: ${props => animateTwo(props.color)}
-    ${props => props.speed / 4 || 2}s infinite ease-in-out;
+  animation: ${({ color }) => animateTwo(color)}
+    ${({ speed }) => createAnimation(speed / 4, 'ease-in-out')};
 `;
 
 const ItemThree = styled(Item)`
-  animation: ${props => animateThree(props.color)}
-    ${props => props.speed / 4 || 2}s infinite ease-in-out;
+  animation: ${({ color }) => animateThree(color)}
+    ${({ speed }) => createAnimation(speed / 4, 'ease-in-out')};
 `;
 
 const ItemFour = styled(Item)`
-  animation: ${props => animateFour(props.color)}
-    ${props => props.speed / 4 || 2}s infinite ease-in-out;
+  animation: ${({ color }) => animateFour(color)}
+    ${({ speed }) => createAnimation(speed / 4, 'ease-in-out')};
 `;
 
+// TODO InColor 等待启用
 const BlockLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} size={size}>
       <ItemFirst speed={speed} size={size} color={color} />
       <ItemTwo speed={speed} size={size} color={color} />
-      <ItemFour speed={speed} size={size} color={color} />
       <ItemThree speed={speed} size={size} color={color} />
+      <ItemFour speed={speed} size={size} color={color} />
     </LoadContainer>
   );
 };

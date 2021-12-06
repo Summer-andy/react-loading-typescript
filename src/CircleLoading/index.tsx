@@ -1,18 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const load = keyframes`
-  0% {
-    opacity: 1;
-    transform: scale(1);
-  }
-  100% {
-    opacity: 0;
-    transform: rotate(90deg) scale(.3);
-  }
-`;
+import { createLoading, createAnimation } from '../utils';
+import { load } from './animate';
 
 const LoadingContainer = styled.div`
   width: 100px;
@@ -27,7 +17,7 @@ const ItemSpan = styled.span`
   margin-right: 5px;
   background: ${({ color }) => color};
   transform-origin: right bottom;
-  animation: ${load} ${({ speed }) => speed}s ease infinite;
+  animation: ${load} ${({ speed }) => createAnimation(speed, 'ease')};
 `;
 
 const ItemSpan1 = styled(ItemSpan)`

@@ -1,6 +1,6 @@
 import { keyframes } from 'styled-components';
 
-export const changeSharp = (color, size) => keyframes`
+const changeSharp = (color, size) => keyframes`
   0% {
     box-shadow: inset 0 0 0 ${color};
   }
@@ -8,3 +8,5 @@ export const changeSharp = (color, size) => keyframes`
     box-shadow: inset ${size} 0 0 ${color}
   }
 `;
+
+export { changeSharp };
