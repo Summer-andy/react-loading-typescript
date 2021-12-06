@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
 
 const changeSharp = keyframes`
   0% {
@@ -47,15 +47,10 @@ const LoadContainer = styled.div`
   }
 `;
 
-const CoffeeLoading: React.FC<LoadingInfo> = ({
-  speed = 1,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const CoffeeLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} color={color} size={size} speed={speed} />
   );
 };
 
-export default CoffeeLoading;
+export default createLoading(CoffeeLoading)(1);

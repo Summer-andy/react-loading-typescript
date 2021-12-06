@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const bouncedelay = keyframes`
   0%,
@@ -45,12 +45,7 @@ const LoadThree = styled(load)`
   animation-delay: -0.16s;
 `;
 
-const TransverseLoading: React.FC<LoadingInfo> = ({
-  speed = 1.4,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const TransverseLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <LoadFirst color={color} size={size} speed={speed} />
@@ -60,4 +55,4 @@ const TransverseLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default TransverseLoading;
+export default createLoading(TransverseLoading)(1.4);

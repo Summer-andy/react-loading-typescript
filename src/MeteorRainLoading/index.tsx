@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const scaling = keyframes`
   0% {
@@ -100,12 +100,7 @@ const Star = styled.div`
     ${moveTo} ${props => props.speed || 3}s ease-in-out infinite;
 `;
 
-const MeteorRainLoading: React.FC<LoadingInfo> = ({
-  speed = 3,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const MeteorRainLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
       {Array.from(Array(9)).map((item, index) => (
@@ -115,4 +110,4 @@ const MeteorRainLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default MeteorRainLoading;
+export default createLoading(MeteorRainLoading)(3);

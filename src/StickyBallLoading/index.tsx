@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const fly = keyframes`
   0% {
@@ -53,13 +53,7 @@ const BallTwo = styled.div`
       props.speed / 2 || 1}s infinite;
 `;
 
-const StickyBallLoading: React.FC<LoadingInfo> = ({
-  inColor,
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const StickyBallLoading = ({ speed, size, style, color, inColor }) => {
   return (
     <LoadContainer style={style} size={size}>
       <BlurField>
@@ -70,4 +64,4 @@ const StickyBallLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default StickyBallLoading;
+export default createLoading(StickyBallLoading)(2);

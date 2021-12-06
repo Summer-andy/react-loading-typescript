@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
 
 const changeSharp = keyframes`
   0% {
@@ -47,12 +47,7 @@ const ItemThree = styled(Item)`
   animation-delay: calc(${({ speed }) => speed}s * 4 / -1.5);
 `;
 
-const CircleToBlockLoading: React.FC<LoadingInfo> = ({
-  speed = 3,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const CircleToBlockLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style}>
       <ItemFirst color={color} size={size} speed={speed} />
@@ -62,4 +57,4 @@ const CircleToBlockLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default CircleToBlockLoading;
+export default createLoading(CircleToBlockLoading)(3);

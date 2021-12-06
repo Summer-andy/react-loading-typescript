@@ -7,8 +7,8 @@ import {
   animateThree,
   animateFour
 } from './animate';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const LoadContainer = styled.div`
   width: ${({ size }) => sizeContainer[size]};
@@ -46,12 +46,7 @@ const ItemFour = styled(Item)`
     ${props => props.speed / 4 || 2}s infinite ease-in-out;
 `;
 
-const BlockLoading: React.FC<LoadingInfo> = ({
-  speed = 8,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const BlockLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} size={size}>
       <ItemFirst speed={speed} size={size} color={color} />
@@ -62,4 +57,4 @@ const BlockLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default BlockLoading;
+export default createLoading(BlockLoading)(8);

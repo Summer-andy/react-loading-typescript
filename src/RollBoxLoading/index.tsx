@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const rollOne = keyframes`
   0%,
@@ -100,12 +100,7 @@ const RollBoxMove = styled.div`
   bottom: 0;
 `;
 
-const RollBoxLoading: React.FC<LoadingInfo> = ({
-  speed = 3,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const RollBoxLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
       <RollBoxOne size={size} color={color} speed={speed} />
@@ -115,4 +110,4 @@ const RollBoxLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default RollBoxLoading;
+export default createLoading(RollBoxLoading)(3);

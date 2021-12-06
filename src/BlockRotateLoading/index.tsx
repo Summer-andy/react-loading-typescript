@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
 
 const animate1 = keyframes`
   100% {
@@ -44,13 +44,8 @@ const ItemTwo = styled(Item)`
   bottom: 0;
 `;
 
-// TODO 还未修正完毕
-const BlockRotateLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+// TODO size 参数暂未生效
+const BlockRotateLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <ItemOne color={color} speed={speed} />
@@ -59,4 +54,4 @@ const BlockRotateLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default BlockRotateLoading;
+export default createLoading(BlockRotateLoading)(2);

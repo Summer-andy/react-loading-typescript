@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const load = keyframes`
   0% {
@@ -46,12 +46,7 @@ const ItemSpan4 = styled(ItemSpan)`
   animation-delay: 0.8s;
 `;
 
-const CircleLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const CircleLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <ItemSpan1 color={color} speed={speed} size={size} />
@@ -62,4 +57,4 @@ const CircleLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default CircleLoading;
+export default createLoading(CircleLoading)(2);

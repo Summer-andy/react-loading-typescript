@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const rotate = keyframes`
   0% {
@@ -75,12 +75,7 @@ const CircleFour = styled.div`
   bottom: 0;
 `;
 
-const RotateCircleLoading: React.FC<LoadingInfo> = ({
-  speed = 2.4,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const RotateCircleLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} color={color} size={size}>
       <CircleOne color={color} speed={speed} size={size} />
@@ -91,4 +86,4 @@ const RotateCircleLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default RotateCircleLoading;
+export default createLoading(RotateCircleLoading)(2.4);

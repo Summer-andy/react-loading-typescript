@@ -1,13 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import {
-  commonStyle,
-  sizeContainer,
-  borderRadiusContainerSize,
-  sizeItem,
-  defaultColor
-} from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, borderRadiusContainerSize, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const animate = keyframes`
   from {
@@ -46,12 +40,7 @@ const ItemTwo = styled(Item)`
   animation-delay: -${props => props.speed / 4 || 0.2}s;
 `;
 
-const WaveTopBottomLoading: React.FC<LoadingInfo> = ({
-  speed = 0.8,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const WaveTopBottomLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style} size={size}>
       <ItemFirst color={color} speed={speed} size={size} />
@@ -61,4 +50,4 @@ const WaveTopBottomLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default WaveTopBottomLoading;
+export default createLoading(WaveTopBottomLoading)(0.8);

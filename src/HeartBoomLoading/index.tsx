@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer, sizeItem, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const boom = keyframes`
   0% {
@@ -62,12 +62,7 @@ const Heart = styled.div`
   }
 `;
 
-const HeartBoomLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const HeartBoomLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
       <Heart color={color} speed={speed} size={size} />
@@ -75,4 +70,4 @@ const HeartBoomLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default HeartBoomLoading;
+export default createLoading(HeartBoomLoading)(2);

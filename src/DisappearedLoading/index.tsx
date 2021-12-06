@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const animate = keyframes`
   from {
@@ -37,12 +37,7 @@ const ItemTwo = styled(Item)`
   animation-delay: -${props => props.speed / 4}s;
 `;
 
-const DisappearedLoading: React.FC<LoadingInfo> = ({
-  speed = 0.8,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const DisappearedLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <ItemFirst color={color} speed={speed} size={size} />
@@ -52,4 +47,4 @@ const DisappearedLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default DisappearedLoading;
+export default createLoading(DisappearedLoading)(0.8);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const animationChild = keyframes`
   0% {
@@ -34,12 +34,7 @@ const Item = styled.div`
 `;
 
 // FIXME 拼写问题
-const PassThrouthLoading: React.FC<LoadingInfo> = ({
-  speed = 1,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const PassThrouthLoading = ({ speed, size, style, color }) => {
   return (
     <Container style={style} speed={speed} color={color}>
       <Item speed={speed} color={color} size={size} />
@@ -47,4 +42,4 @@ const PassThrouthLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default PassThrouthLoading;
+export default createLoading(PassThrouthLoading)(1);

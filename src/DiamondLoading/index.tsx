@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const load = keyframes`
   0% {
@@ -75,12 +75,8 @@ const ItemFour = styled(ItemDiv)`
   top: 30px;
 `;
 
-const DiamondLoading: React.FC<LoadingInfo> = ({
-  speed = 1,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+// TODO size 参数未生效
+const DiamondLoading = ({ speed, size, style, color }) => {
   return (
     <Container {...{ style, speed, color }}>
       <ItemFirst color={color} speed={speed} />
@@ -91,4 +87,4 @@ const DiamondLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default DiamondLoading;
+export default createLoading(DiamondLoading)(1);

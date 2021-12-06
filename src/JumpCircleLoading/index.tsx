@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const bounce = keyframes`
   0% {
@@ -43,12 +43,7 @@ const BottomReac = styled.div`
   background-color: ${props => props.color || '#00adb5'};
 `;
 
-const JumpCircleLoading: React.FC<LoadingInfo> = ({
-  speed = 0.5,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const JumpCircleLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
       <Circle color={color} speed={speed} size={size} />
@@ -57,4 +52,4 @@ const JumpCircleLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default JumpCircleLoading;
+export default createLoading(JumpCircleLoading)(0.5);

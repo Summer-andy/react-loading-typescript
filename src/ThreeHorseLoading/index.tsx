@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { createLoading } from '../utils';
 
 const animation = width => keyframes`
   0% {
@@ -39,12 +38,7 @@ const ItemSpan = styled.span`
     ${props => props.speed || 2}s linear infinite;
 `;
 
-const ThreeHorseLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const ThreeHorseLoading = ({ speed, size, style, color }) => {
   return (
     <Container style={style} color={color} size={size}>
       <ItemSpan speed={speed} style={style} color={color} size={size} />
@@ -52,4 +46,4 @@ const ThreeHorseLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default ThreeHorseLoading;
+export default createLoading(ThreeHorseLoading)(2);
