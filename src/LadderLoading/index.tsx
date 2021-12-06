@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer, sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const leftLadderMove = keyframes`
   0% {
@@ -146,12 +146,8 @@ const RowLadderThree = styled.div`
   animation: ${RowLadderThreeMove} ${props => props.speed || 4}s ease infinite;
 `;
 
-const LadderLoading: React.FC<LoadingInfo> = ({
-  speed = 4,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+// TODO size 参数未提取
+const LadderLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style}>
       <LeftLadder color={color} speed={speed} size={size} />
@@ -163,4 +159,4 @@ const LadderLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default LadderLoading;
+export default createLoading(LadderLoading)(4);

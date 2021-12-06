@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const animation = keyframes`
   0% {
@@ -51,12 +51,7 @@ const Item = styled.div`
 `;
 
 // TODO 时间参数未生效
-const PointSpreadLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const PointSpreadLoading = ({ speed, size, style, color }) => {
   return (
     <Container style={style}>
       <Item delay="250" speed={speed} color={color} size={size} />
@@ -67,4 +62,4 @@ const PointSpreadLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default PointSpreadLoading;
+export default createLoading(PointSpreadLoading)(2);

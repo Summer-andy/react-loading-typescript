@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { createLoading } from '../utils';
 
 const bouncedelay = keyframes`
   0% {
@@ -82,12 +81,7 @@ const Con = styled.div`
   animation: ${bouncedelay} ${props => props.speed || 5}s infinite linear;
 `;
 
-const WindMillLoading: React.FC<LoadingInfo> = ({
-  speed = 5,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const WindMillLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style} color={color} size={size}>
       <Center color={color} />
@@ -100,4 +94,4 @@ const WindMillLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default WindMillLoading;
+export default createLoading(WindMillLoading)(5);

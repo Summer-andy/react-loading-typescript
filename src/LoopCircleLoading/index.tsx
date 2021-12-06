@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const bouncedelay = keyframes`
   0%,
@@ -119,12 +119,7 @@ const CircleFour2 = styled(circle)`
   bottom: 0;
 `;
 
-const LoopCircleLoading: React.FC<LoadingInfo> = ({
-  speed = 1.2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const LoopCircleLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style}>
       <ContainerFirst>
@@ -149,4 +144,4 @@ const LoopCircleLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default LoopCircleLoading;
+export default createLoading(LoopCircleLoading)(1.2);

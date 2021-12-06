@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { createLoading } from '../utils';
 
 const rotate = keyframes`
   50% {
@@ -178,12 +177,7 @@ const HalfCircle = styled.div`
 `;
 
 // FIXME 拼写问题
-const SemipolarLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const SemipolarLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} size={size}>
       {Array.from(Array(5)).map((item, index) => (
@@ -193,4 +187,4 @@ const SemipolarLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default SemipolarLoading;
+export default createLoading(SemipolarLoading)(2);

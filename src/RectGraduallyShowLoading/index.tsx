@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { createLoading } from '../utils';
 
 const gradualShowDispear = keyframes`
   0% {
@@ -105,12 +104,7 @@ const RectSmall = styled.div`
   background-color: ${props => props.color || '#00adb5'};
 `;
 
-const RectGraduallyShowLoading: React.FC<LoadingInfo> = ({
-  speed = 4,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const RectGraduallyShowLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} color={color} size={size}>
       {/* <RectBig speed={speed} color={color} size={size} /> */}
@@ -123,4 +117,4 @@ const RectGraduallyShowLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default RectGraduallyShowLoading;
+export default createLoading(RectGraduallyShowLoading)(4);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const load = keyframes`
   0% {
@@ -48,12 +48,8 @@ const ItemDiv = styled.div`
   border-bottom-right-radius: 12px;
 `;
 
-const EatLoading: React.FC<LoadingInfo> = ({
-  speed = 1,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+// TODO size 参数未生效
+const EatLoading = ({ speed, size, style, color }) => {
   return (
     <Container {...{ style, speed, color }}>
       <ItemDiv color={color} />
@@ -61,4 +57,4 @@ const EatLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default EatLoading;
+export default createLoading(EatLoading)(1);

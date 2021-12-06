@@ -1,7 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { createLoading } from '../utils';
 
 const rotate = keyframes`
   100% {
@@ -101,13 +100,7 @@ const Mars = styled.div`
 `;
 
 // TODO 默认时间暂时分不出来
-const SolarSystemLoading: React.FC<LoadingInfo> = ({
-  speed,
-  // speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const SolarSystemLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
       <Sun color={color} size={size} />
@@ -121,4 +114,4 @@ const SolarSystemLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default SolarSystemLoading;
+export default createLoading(SolarSystemLoading)(2);

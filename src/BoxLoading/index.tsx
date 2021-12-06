@@ -1,8 +1,8 @@
 import * as React from 'react';
 import styled from 'styled-components';
 import { shadow, animate } from './animate';
-import { commonStyle, defaultColor, sizeContainer } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
 
 const LoadContainer = styled.div`
   width: ${({ size }) => sizeContainer[size]};
@@ -34,15 +34,10 @@ const LoadContainer = styled.div`
   }
 `;
 
-const BoxLoading: React.FC<LoadingInfo> = ({
-  speed = 0.5,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const BoxLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} color={color} speed={speed} size={size} />
   );
 };
 
-export default BoxLoading;
+export default createLoading(BoxLoading)(0.5);

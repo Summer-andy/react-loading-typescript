@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeContainer } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
 
 const animate = keyframes`
   to {
@@ -55,12 +55,7 @@ const Item = styled.div`
     infinite;
 `;
 
-const NineCellLoading: React.FC<LoadingInfo> = ({
-  speed = 1.5,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const NineCellLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed}>
       {Array.from(Array(9)).map((item, index) => (
@@ -70,4 +65,4 @@ const NineCellLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default NineCellLoading;
+export default createLoading(NineCellLoading)(1.5);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, defaultColor, sizeItem } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const leftAnimate = keyframes`
   50%,
@@ -49,12 +49,7 @@ const ItemRight = styled(Item)`
     infinite;
 `;
 
-const TouchBallLoading: React.FC<LoadingInfo> = ({
-  speed = 1,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const TouchBallLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style} size={size}>
       <ItemLeft color={color} speed={speed} size={size} />
@@ -64,4 +59,4 @@ const TouchBallLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default TouchBallLoading;
+export default createLoading(TouchBallLoading)(1);

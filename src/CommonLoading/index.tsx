@@ -1,7 +1,7 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem, defaultColor } from '../config';
-import { LoadingInfo } from '../@types';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
 
 const load = keyframes`
   0% {
@@ -23,7 +23,7 @@ const load = keyframes`
   }
   90% {
     transform: rotate(340deg);
-  }
+  } 
   100% {
     transform: rotate(360deg);
   }
@@ -69,12 +69,7 @@ const ItemSpan = styled.span`
   margin-left: -10px;
 `;
 
-const CommonLoading: React.FC<LoadingInfo> = ({
-  speed = 2,
-  size = 'default',
-  style = commonStyle,
-  color = defaultColor
-}) => {
+const CommonLoading = ({ speed, size, style, color }) => {
   return (
     <Container {...{ style, speed, color, size }}>
       <ItemDiv1 speed={speed}>
@@ -93,4 +88,4 @@ const CommonLoading: React.FC<LoadingInfo> = ({
   );
 };
 
-export default CommonLoading;
+export default createLoading(CommonLoading)(2);
