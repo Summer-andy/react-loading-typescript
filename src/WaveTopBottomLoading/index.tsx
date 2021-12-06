@@ -1,7 +1,13 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer, borderRadiusContainerSize, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import {
+  commonStyle,
+  sizeContainer,
+  borderRadiusContainerSize,
+  sizeItem,
+  defaultColor
+} from '../config';
+import { LoadingInfo } from '../@types';
 
 const animate = keyframes`
   from {
@@ -13,8 +19,10 @@ const animate = keyframes`
 `;
 
 const LoadingContainer = styled.div`
-  width: ${props => props.size === 'small' ? 40 : (props.size === 'large' ? 60 : 50)}px;
-  height: ${props => props.size === 'small' ? 40 : (props.size === 'large' ? 60 : 50)}px;
+  width: ${props =>
+    props.size === 'small' ? 40 : props.size === 'large' ? 60 : 50}px;
+  height: ${props =>
+    props.size === 'small' ? 40 : props.size === 'large' ? 60 : 50}px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -26,7 +34,8 @@ const Item = styled.div`
   height: ${props => sizeItem[props.size] || sizeItem['default']};
   border-radius: 50%;
   background: ${props => props.color || '#00adb5'};
-  animation: ${animate} ${props => props.speed || 0.8}s ease-in-out alternate infinite;
+  animation: ${animate} ${props => props.speed || 0.8}s ease-in-out alternate
+    infinite;
 `;
 
 const ItemFirst = styled(Item)`
@@ -37,14 +46,19 @@ const ItemTwo = styled(Item)`
   animation-delay: -${props => props.speed / 4 || 0.2}s;
 `;
 
-const WaveTopBottomLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
-    return (
-        <LoadingContainer style={style} size={size}>
-            <ItemFirst color={color} speed={speed} size={size}/>
-            <ItemTwo color={color} speed={speed} size={size}/>
-            <Item color={color} speed={speed} size={size}/>
-        </LoadingContainer>
-    );
+const WaveTopBottomLoading: React.FC<LoadingInfo> = ({
+  speed = 0.8,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadingContainer style={style} size={size}>
+      <ItemFirst color={color} speed={speed} size={size} />
+      <ItemTwo color={color} speed={speed} size={size} />
+      <Item color={color} speed={speed} size={size} />
+    </LoadingContainer>
+  );
 };
 
 export default WaveTopBottomLoading;

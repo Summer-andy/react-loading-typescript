@@ -74,6 +74,7 @@ const animateThree = color => keyframes`
     background: ${color};
   }
 `;
+
 const animateFour = color => keyframes`
   0% {
     background: ${color};

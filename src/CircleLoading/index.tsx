@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeItem } from '../config';
+import { LoadingInfo } from '../@types';
 
 const load = keyframes`
   0% {
@@ -21,13 +21,13 @@ const LoadingContainer = styled.div`
 
 const ItemSpan = styled.span`
   display: inline-block;
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
+  height: ${({ size }) => sizeItem[size]};
+  width: ${({ size }) => sizeItem[size]};
   margin-top: 50%;
   margin-right: 5px;
-  background: ${props => props.color || '#00adb5'};
+  background: ${({ color }) => color};
   transform-origin: right bottom;
-  animation: ${load} ${props => props.speed || 2}s ease infinite;
+  animation: ${load} ${({ speed }) => speed}s ease infinite;
 `;
 
 const ItemSpan1 = styled(ItemSpan)`
@@ -41,19 +41,25 @@ const ItemSpan2 = styled(ItemSpan)`
 const ItemSpan3 = styled(ItemSpan)`
   animation-delay: 0.6s;
 `;
+
 const ItemSpan4 = styled(ItemSpan)`
   animation-delay: 0.8s;
 `;
 
-const CircleLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
-    return (
-        <LoadingContainer style={style}>
-            <ItemSpan1 color={color} speed={speed} size={size}/>
-            <ItemSpan2 color={color} speed={speed} size={size}/>
-            <ItemSpan3 color={color} speed={speed} size={size}/>
-            <ItemSpan4 color={color} speed={speed} size={size}/>
-        </LoadingContainer>
-    );
+const CircleLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadingContainer style={style}>
+      <ItemSpan1 color={color} speed={speed} size={size} />
+      <ItemSpan2 color={color} speed={speed} size={size} />
+      <ItemSpan3 color={color} speed={speed} size={size} />
+      <ItemSpan4 color={color} speed={speed} size={size} />
+    </LoadingContainer>
+  );
 };
 
 export default CircleLoading;

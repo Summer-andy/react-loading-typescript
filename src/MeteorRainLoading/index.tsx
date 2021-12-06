@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
+import { LoadingInfo } from '../@types';
 
 const scaling = keyframes`
   0% {
@@ -25,8 +25,10 @@ const moveTo = keyframes`
 `;
 
 const LoadContainer = styled.div`
-  width: ${props => props.size === 'small' ? 68 : (props.size === 'large' ? 88 : 80)}px;
-  height: ${props => props.size === 'small' ? 68 : (props.size === 'large' ? 88 : 80)}px;
+  width: ${props =>
+    props.size === 'small' ? 68 : props.size === 'large' ? 88 : 80}px;
+  height: ${props =>
+    props.size === 'small' ? 68 : props.size === 'large' ? 88 : 80}px;
   position: relative;
   transform: rotateZ(45deg);
 
@@ -87,20 +89,30 @@ const LoadContainer = styled.div`
 
 const Star = styled.div`
   height: 2px;
-  background: linear-gradient(-45deg, ${props => props.color || '#00adb5'}, rgba(0, 0, 255, 0));
+  background: linear-gradient(
+    -45deg,
+    ${props => props.color || '#00adb5'},
+    rgba(0, 0, 255, 0)
+  );
   position: absolute;
   border-radius: 50%;
-  animation: ${scaling} ${props => props.speed || 3}s ease-in-out infinite, ${moveTo} ${props => props.speed || 3}s ease-in-out infinite;
-`
+  animation: ${scaling} ${props => props.speed || 3}s ease-in-out infinite,
+    ${moveTo} ${props => props.speed || 3}s ease-in-out infinite;
+`;
 
-const MeteorRainLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
-    return (
-        <LoadContainer style={style} size={size}>
-            {
-                Array.from(Array(9)).map((item, index) => <Star color={color} speed={speed} key={index}/>)
-            }
-        </LoadContainer>
-    );
+const MeteorRainLoading: React.FC<LoadingInfo> = ({
+  speed = 3,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style} size={size}>
+      {Array.from(Array(9)).map((item, index) => (
+        <Star color={color} speed={speed} key={index} />
+      ))}
+    </LoadContainer>
+  );
 };
 
 export default MeteorRainLoading;

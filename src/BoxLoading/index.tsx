@@ -1,32 +1,32 @@
 import * as React from 'react';
 import styled from 'styled-components';
-import {shadow, animate} from './animate';
-import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../@types';
+import { shadow, animate } from './animate';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
+import { LoadingInfo } from '../@types';
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
 
   &:before {
     content: '';
-    width: ${props => sizeContainer[props.size] || sizeContainer['default']};
+    width: ${({ size }) => sizeContainer[size]};
     height: 5px;
     background: #000;
     opacity: 0.1;
     position: absolute;
-    top: calc(${props => sizeContainer[props.size] || sizeContainer['default']} + 10px);
+    top: calc(${({ size }) => sizeContainer[size]} + 10px);
     left: 0;
     border-radius: 50%;
-    animation: ${animate} ${props => props.speed || 0.5}s linear infinite;
+    animation: ${animate} ${({ speed }) => speed}s linear infinite;
   }
 
   &:after {
     content: '';
-    width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-    height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-    background: ${props => props.color || '#00adb5'};
-    animation: ${shadow} ${props => props.speed || 0.5}s linear infinite;
+    width: ${({ size }) => sizeContainer[size]};
+    height: ${({ size }) => sizeContainer[size]};
+    background: ${({ color }) => color};
+    animation: ${shadow} ${({ speed }) => speed}s linear infinite;
     position: absolute;
     top: 0;
     left: 0;
@@ -34,10 +34,15 @@ const LoadContainer = styled.div`
   }
 `;
 
-const BoxLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
-    return (
-        <LoadContainer style={style} color={color} speed={speed} size={size}/>
-    );
+const BoxLoading: React.FC<LoadingInfo> = ({
+  speed = 0.5,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style} color={color} speed={speed} size={size} />
+  );
 };
 
 export default BoxLoading;

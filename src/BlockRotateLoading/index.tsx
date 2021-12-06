@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
+import { LoadingInfo } from '../@types';
 
 const animate1 = keyframes`
   100% {
@@ -32,8 +32,8 @@ const Item = styled.div`
   width: 25px;
   height: 25px;
   border-radius: 100%;
-  background-color: ${props => props.color || '#00adb5'};
-  animation: ${animate2} ${props => props.speed || 2}s ease-in-out infinite;
+  background-color: ${({ color }) => color};
+  animation: ${animate2} ${({ speed }) => speed}s ease-in-out infinite;
 `;
 
 const ItemOne = styled(Item)``;
@@ -44,13 +44,19 @@ const ItemTwo = styled(Item)`
   bottom: 0;
 `;
 
-const BlockRotateLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
-    return (
-        <LoadingContainer style={style}>
-            <ItemOne color={color} speed={speed}/>
-            <ItemTwo color={color} speed={speed}/>
-        </LoadingContainer>
-    );
+// TODO 还未修正完毕
+const BlockRotateLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadingContainer style={style}>
+      <ItemOne color={color} speed={speed} />
+      <ItemTwo color={color} speed={speed} />
+    </LoadingContainer>
+  );
 };
 
 export default BlockRotateLoading;

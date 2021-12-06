@@ -1,13 +1,4 @@
-import { CommonInterFace, Size } from '../@types';
-
-const commonStyle: CommonInterFace = {
-  margin: 'auto',
-  position: 'absolute',
-  left: 0,
-  right: 0,
-  top: 0,
-  bottom: 0
-};
+import { Size, CommonInterFace } from '../@types';
 
 const sizeItem: Size = {
   small: '10px',
@@ -27,4 +18,21 @@ const borderRadiusContainerSize: Size = {
   large: '18px'
 };
 
-export { commonStyle, sizeItem, sizeContainer, borderRadiusContainerSize };
+const commonStyle: CommonInterFace = {
+  margin: 'auto',
+  position: 'absolute',
+  left: 0,
+  right: 0,
+  top: 0,
+  bottom: 0
+};
+
+const defaultColor = '#00adb5';
+
+export {
+  sizeItem,
+  sizeContainer,
+  borderRadiusContainerSize,
+  commonStyle,
+  defaultColor
+};

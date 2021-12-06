@@ -1,11 +1,11 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
+import { LoadingInfo } from '../@types';
 
 const changeSharp = keyframes`
   0% {
-    height: 0px;
+    height: 0;
   }
   100% {
     height: 6px;
@@ -13,10 +13,10 @@ const changeSharp = keyframes`
 `;
 
 const LoadContainer = styled.div`
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  border: 1px ${props => props.color || '#00adb5'} solid;
-  border-radius: 0px 0px 5px 5px;
+  height: ${({ size }) => sizeContainer[size]};
+  width: ${({ size }) => sizeContainer[size]};
+  border: 1px ${({ color }) => color} solid;
+  border-radius: 0 0 5px 5px;
   position: relative;
 
   &::after {
@@ -24,11 +24,12 @@ const LoadContainer = styled.div`
     width: 5px;
     height: 12px;
     position: absolute;
-    border: 1px solid ${props => props.color || '#00adb5'};
+    border: 1px solid ${({ color }) => color};
     border-left: none;
-    border-radius: 0px ${props => sizeContainer[props.size] || sizeContainer['default']} ${props => sizeContainer[props.size] || sizeContainer['default']} 0px;
+    border-radius: 0 ${({ size }) => sizeContainer[size]}
+      ${({ size }) => sizeContainer[size]} 0;
     top: 4px;
-    left: ${props => sizeContainer[props.size] || sizeContainer['default']};
+    left: ${({ size }) => sizeContainer[size]};
   }
 
   &::before {
@@ -36,16 +37,25 @@ const LoadContainer = styled.div`
     width: 1px;
     height: 6px;
     position: absolute;
-    background-color: ${props => props.color || '#00adb5'};
+    background-color: ${({ color }) => color};
     top: -10px;
-    left: ${props => props.size === 'small' ? 6 : (props.size === 'large' ? 12 : 8)}px;
-    box-shadow: 5px 0px 0px 0px ${props => props.color || '#00adb5'}, 5px -5px 0px 0px ${props => props.color || '#00adb5'}, 10px 0px 0px 0px ${props => props.color || '#00adb5'};
-    animation: ${changeSharp} ${props => props.speed || 1}s linear infinite alternate;
+    left: ${props =>
+      props.size === 'small' ? 6 : props.size === 'large' ? 12 : 8}px;
+    box-shadow: 5px 0 0 0 ${({ color }) => color},
+      5px -5px 0 0 ${({ color }) => color}, 10px 0 0 0 ${({ color }) => color};
+    animation: ${changeSharp} ${({ speed }) => speed}s linear infinite alternate;
   }
 `;
 
-const CoffeeLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, size = 'default', speed}) => {
-    return <LoadContainer style={style} color={color} size={size} speed={speed}/>;
+const CoffeeLoading: React.FC<LoadingInfo> = ({
+  speed = 1,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style} color={color} size={size} speed={speed} />
+  );
 };
 
 export default CoffeeLoading;

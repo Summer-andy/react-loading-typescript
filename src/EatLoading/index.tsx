@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeItem, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const load = keyframes`
   0% {
@@ -22,7 +22,7 @@ const Container = styled.div`
   vertical-align: middle;
   border: 8px dotted ${props => props.color || '#00adb5'};
   transition: all 1s ease;
-  animation: ${load} ${props => props.speed || 1}s linear infinite;
+  animation: ${load} ${props => props.speed}s linear infinite;
   border-bottom-width: 1px;
   border-bottom-color: ${props => props.color || '#00adb5'};
   border-left-width: 2px;
@@ -48,12 +48,17 @@ const ItemDiv = styled.div`
   border-bottom-right-radius: 12px;
 `;
 
-const EatLoading: React.FC<LoadingInfo> = ({style = commonStyle, speed, color}) => {
-    return (
-        <Container {...{style, speed, color}}>
-            <ItemDiv color={color}/>
-        </Container>
-    );
+const EatLoading: React.FC<LoadingInfo> = ({
+  speed = 1,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <Container {...{ style, speed, color }}>
+      <ItemDiv color={color} />
+    </Container>
+  );
 };
 
 export default EatLoading;
