@@ -7,7 +7,7 @@ import {
   animateThree,
   animateFour
 } from './animate';
-import { commonStyle, sizeContainer, sizeItem } from '../util/style';
+import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
 import { LoadingInfo } from '../@types';
 
 const LoadContainer = styled.div`
@@ -48,9 +48,9 @@ const ItemFour = styled(Item)`
 
 const BlockLoading: React.FC<LoadingInfo> = ({
   speed = 8,
-  color = '#00adb5',
   size = 'default',
-  style = commonStyle
+  style = commonStyle,
+  color = defaultColor
 }) => {
   return (
     <LoadContainer style={style} speed={speed} size={size}>

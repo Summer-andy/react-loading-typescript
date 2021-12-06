@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeItem, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const load = keyframes`
   0% {
@@ -24,7 +24,7 @@ const Container = styled.div`
 
 const ItemDiv = styled.div`
   position: absolute;
-  animation: ${load} ${props => props.speed || 1}s ease alternate infinite;
+  animation: ${load} ${props => props.speed}s ease alternate infinite;
   transform: scale(0.2);
 
   &::before {
@@ -75,15 +75,20 @@ const ItemFour = styled(ItemDiv)`
   top: 30px;
 `;
 
-const DiamonLoading: React.FC<LoadingInfo> = ({style = commonStyle, speed, color}) => {
-    return (
-        <Container {...{style, speed, color}}>
-            <ItemFirst color={color} speed={speed}/>
-            <ItemTwo color={color} speed={speed}/>
-            <ItemThree color={color} speed={speed}/>
-            <ItemFour color={color} speed={speed}/>
-        </Container>
-    );
+const DiamondLoading: React.FC<LoadingInfo> = ({
+  speed = 1,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <Container {...{ style, speed, color }}>
+      <ItemFirst color={color} speed={speed} />
+      <ItemTwo color={color} speed={speed} />
+      <ItemThree color={color} speed={speed} />
+      <ItemFour color={color} speed={speed} />
+    </Container>
+  );
 };
 
-export default DiamonLoading;
+export default DiamondLoading;

@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeContainer, sizeItem } from '../config';
+import { LoadingInfo } from '../@types';
 
 const rollOne = keyframes`
   0%,
@@ -59,8 +59,7 @@ const moveLeft = keyframes`
   100% {
     transform: translateX(-100%);
   }
-`
-
+`;
 
 const LoadContainer = styled.div`
   width: ${props => sizeContainer[props.size] || sizeContainer['default']};
@@ -78,7 +77,7 @@ const RollBoxOne = styled.div`
   left: 0;
   bottom: 0;
   transform-origin: right top;
-`
+`;
 
 const RollBoxTwo = styled.div`
   width: ${props => sizeItem[props.size] || sizeItem[props.size]};
@@ -89,7 +88,7 @@ const RollBoxTwo = styled.div`
   left: ${props => sizeItem[props.size] || sizeItem[props.size]};
   bottom: ${props => sizeItem[props.size] || sizeItem[props.size]};
   transform-origin: left bottom;
-`
+`;
 
 const RollBoxMove = styled.div`
   width: ${props => sizeItem[props.size] || sizeItem[props.size]};
@@ -99,16 +98,21 @@ const RollBoxMove = styled.div`
   position: absolute;
   left: ${props => sizeItem[props.size] || sizeItem[props.size]};
   bottom: 0;
-`
+`;
 
-const RollBoxLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
-    return (
-        <LoadContainer style={style} size={size}>
-            <RollBoxOne size={size} color={color} speed={speed}/>
-            <RollBoxTwo size={size} color={color} speed={speed}/>
-            <RollBoxMove size={size} color={color} speed={speed}/>
-        </LoadContainer>
-    );
+const RollBoxLoading: React.FC<LoadingInfo> = ({
+  speed = 3,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style} size={size}>
+      <RollBoxOne size={size} color={color} speed={speed} />
+      <RollBoxTwo size={size} color={color} speed={speed} />
+      <RollBoxMove size={size} color={color} speed={speed} />
+    </LoadContainer>
+  );
 };
 
 export default RollBoxLoading;

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
 import { LoadingInfo } from '../@types';
 
 const changeSharp = (color, size) => keyframes`
@@ -35,11 +35,13 @@ const LoadContainer = styled.div`
 
 const BatteryLoading: React.FC<LoadingInfo> = ({
   speed = 4,
-  color = '#00adb5',
   size = 'default',
-  style = commonStyle
+  style = commonStyle,
+  color = defaultColor
 }) => {
-  return <LoadContainer {...{ style, speed, color, size }} />;
+  return (
+    <LoadContainer speed={speed} color={color} style={style} size={size} />
+  );
 };
 
 export default BatteryLoading;

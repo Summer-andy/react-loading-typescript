@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeItem } from '../config';
+import { LoadingInfo } from '../@types';
 
 const animate = keyframes`
   from {
@@ -22,29 +22,34 @@ const LoadingContainer = styled.div`
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
+  width: ${props => sizeItem[props.size]};
+  height: ${props => sizeItem[props.size]};
   border-radius: 50%;
   background: ${props => props.color || '#00adb5'};
-  animation: ${animate} ${props => props.speed || 0.8}s ease-in-out alternate infinite;
+  animation: ${animate} ${props => props.speed}s ease-in-out alternate infinite;
 `;
 
 const ItemFirst = styled(Item)`
-  animation-delay: -${props => props.speed / 2 || 0.4}s;
+  animation-delay: -${props => props.speed / 2}s;
 `;
 
 const ItemTwo = styled(Item)`
-  animation-delay: -${props => props.speed / 4 || 0.2}s;
+  animation-delay: -${props => props.speed / 4}s;
 `;
 
-const Disappearedloading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
-    return (
-        <LoadingContainer style={style}>
-            <ItemFirst color={color} speed={speed} size={size}/>
-            <ItemTwo color={color} speed={speed} size={size}/>
-            <Item color={color} speed={speed} size={size}/>
-        </LoadingContainer>
-    );
+const DisappearedLoading: React.FC<LoadingInfo> = ({
+  speed = 0.8,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadingContainer style={style}>
+      <ItemFirst color={color} speed={speed} size={size} />
+      <ItemTwo color={color} speed={speed} size={size} />
+      <Item color={color} speed={speed} size={size} />
+    </LoadingContainer>
+  );
 };
 
-export default Disappearedloading;
+export default DisappearedLoading;

@@ -4,7 +4,8 @@ import { LoadingInfo } from '../@types';
 import {
   commonStyle,
   sizeContainer,
-  borderRadiusContainerSize
+  borderRadiusContainerSize,
+  defaultColor
 } from '../config';
 import { animation } from './animation';
 
@@ -18,11 +19,11 @@ const Container = styled.div`
 
 const BabelLoading: React.FC<LoadingInfo> = ({
   speed = 2,
-  color = '#00adb5',
   size = 'default',
-  style = commonStyle
+  style = commonStyle,
+  color = defaultColor
 }) => {
-  return <Container {...{ style, speed, color, size }} />;
+  return <Container speed={speed} color={color} style={style} size={size} />;
 };
 
 export default BabelLoading;

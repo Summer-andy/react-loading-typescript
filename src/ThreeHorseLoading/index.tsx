@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const animation = width => keyframes`
   0% {
@@ -16,7 +16,8 @@ const animation = width => keyframes`
 `;
 
 const Container = styled.div`
-  width: ${props => props.size === 'small' ? 60 : (props.size === 'large' ? 100 : 80)}px;
+  width: ${props =>
+    props.size === 'small' ? 60 : props.size === 'large' ? 100 : 80}px;
   height: 8px;
   border-radius: 4px;
   margin: 0 auto;
@@ -31,15 +32,24 @@ const ItemSpan = styled.span`
   height: 100%;
   border-radius: 3px;
   background: ${props => props.color || '#00adb5'};
-  animation: ${props => animation(props.size === 'small' ? 60 : (props.size === 'large' ? 100 : 80))} ${props => props.speed || 2}s linear infinite;
+  animation: ${props =>
+      animation(
+        props.size === 'small' ? 60 : props.size === 'large' ? 100 : 80
+      )}
+    ${props => props.speed || 2}s linear infinite;
 `;
 
-const ThreeHorseLoading: React.FC<LoadingInfo> = ({speed, color, style = commonStyle, size = "default"}) => {
-    return (
-        <Container style={style} color={color} size={size}>
-            <ItemSpan speed={speed} style={style} color={color} size={size}/>
-        </Container>
-    );
+const ThreeHorseLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <Container style={style} color={color} size={size}>
+      <ItemSpan speed={speed} style={style} color={color} size={size} />
+    </Container>
+  );
 };
 
 export default ThreeHorseLoading;

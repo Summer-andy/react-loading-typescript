@@ -1,3 +1,9 @@
+export interface Size {
+  small: string;
+  default: string;
+  large: string;
+}
+
 export interface CommonInterFace {
   margin: string;
   position: string;
@@ -5,12 +11,6 @@ export interface CommonInterFace {
   right: number;
   top: number;
   bottom: number;
-}
-
-export interface Size {
-  small: string;
-  default: string;
-  large: string;
 }
 
 export interface LoadingInfo {

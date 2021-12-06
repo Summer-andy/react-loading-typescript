@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
+import { LoadingInfo } from '../@types';
 
 const changeSharp = keyframes`
   0% {
@@ -25,36 +25,41 @@ const LoadContainer = styled.div`
 `;
 
 const Item = styled.div`
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  background-color: ${props => props.color || '#00adb5'};
+  height: ${({ size }) => sizeContainer[size]};
+  width: ${({ size }) => sizeContainer[size]};
+  background-color: ${({ color }) => color};
   position: absolute;
   margin: auto;
   border-radius: 2px;
   transform: translateY(0) rotate(45deg) scale(0);
-  animation: ${changeSharp} ${props => props.speed || 3}s linear infinite;
-`
+  animation: ${changeSharp} ${({ speed }) => speed}s linear infinite;
+`;
 
 const ItemFirst = styled(Item)`
-  animation-delay: calc(${props => props.speed || 3}s * 2 / -1.5);
-`
+  animation-delay: calc(${({ speed }) => speed}s * 2 / -1.5);
+`;
 
 const ItemTwo = styled(Item)`
-  animation-delay: calc(${props => props.speed || 3}s * 3 / -1.5);
-`
+  animation-delay: calc(${({ speed }) => speed}s * 3 / -1.5);
+`;
 
 const ItemThree = styled(Item)`
-  animation-delay: calc(${props => props.speed || 3}s * 4 / -1.5);
-`
+  animation-delay: calc(${({ speed }) => speed}s * 4 / -1.5);
+`;
 
-const CircleToBlockLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, size = "default", speed}) => {
-    return (
-        <LoadContainer style={style}>
-            <ItemFirst color={color} size={size} speed={speed}/>
-            <ItemTwo color={color} size={size} speed={speed}/>
-            <ItemThree color={color} size={size} speed={speed}/>
-        </LoadContainer>
-    );
+const CircleToBlockLoading: React.FC<LoadingInfo> = ({
+  speed = 3,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style}>
+      <ItemFirst color={color} size={size} speed={speed} />
+      <ItemTwo color={color} size={size} speed={speed} />
+      <ItemThree color={color} size={size} speed={speed} />
+    </LoadContainer>
+  );
 };
 
 export default CircleToBlockLoading;

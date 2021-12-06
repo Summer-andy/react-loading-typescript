@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeItem, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const load = keyframes`
   0% {
@@ -38,7 +38,7 @@ const ItemDiv = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  animation: ${load} ${props => props.speed || 2}s linear infinite;
+  animation: ${load} ${({ speed }) => speed}s linear infinite;
 `;
 
 const ItemDiv1 = styled(ItemDiv)`
@@ -59,33 +59,38 @@ const ItemDiv4 = styled(ItemDiv)`
 
 const ItemSpan = styled.span`
   display: inline-block;
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
+  height: ${({ size }) => sizeItem[size]};
+  width: ${({ size }) => sizeItem[size]};
   border-radius: 50%;
-  background: ${props => props.color || '#00adb5'};
+  background: ${({ color }) => color};
   position: absolute;
   left: 50%;
   margin-top: -10px;
   margin-left: -10px;
 `;
 
-const CommonLoading: React.FC<LoadingInfo> = ({style = commonStyle, speed, color, size = 'default'}) => {
-    return (
-        <Container {...{style, speed, color, size}}>
-            <ItemDiv1 speed={speed}>
-                <ItemSpan color={color} size={size}/>
-            </ItemDiv1>
-            <ItemDiv2 speed={speed}>
-                <ItemSpan color={color} size={size}/>
-            </ItemDiv2>
-            <ItemDiv3 speed={speed}>
-                <ItemSpan color={color} size={size}/>
-            </ItemDiv3>
-            <ItemDiv4 speed={speed}>
-                <ItemSpan color={color} size={size}/>
-            </ItemDiv4>
-        </Container>
-    );
+const CommonLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <Container {...{ style, speed, color, size }}>
+      <ItemDiv1 speed={speed}>
+        <ItemSpan color={color} size={size} />
+      </ItemDiv1>
+      <ItemDiv2 speed={speed}>
+        <ItemSpan color={color} size={size} />
+      </ItemDiv2>
+      <ItemDiv3 speed={speed}>
+        <ItemSpan color={color} size={size} />
+      </ItemDiv3>
+      <ItemDiv4 speed={speed}>
+        <ItemSpan color={color} size={size} />
+      </ItemDiv4>
+    </Container>
+  );
 };
 
 export default CommonLoading;

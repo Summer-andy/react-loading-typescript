@@ -1,6 +1,6 @@
 import * as React from 'react';
 import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
+import { commonStyle, defaultColor, sizeContainer } from '../config';
 import { LoadingInfo } from '../@types';
 
 const animate = keyframes`
@@ -26,18 +26,18 @@ const Item = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
   transform: rotate(0);
-  background: ${props => props.color || '#00adb5'};
-  animation: ${animate} ${props => props.speed || 1}s infinite;
+  background: ${({ color }) => color};
+  animation: ${animate} ${({ speed }) => speed}s infinite;
 `;
 
 const BlockReserveLoading: React.FC<LoadingInfo> = ({
+  speed = 1,
+  size = 'default',
   style = commonStyle,
-  color,
-  speed,
-  size = 'default'
+  color = defaultColor
 }) => {
   return (
     <LoadingContainer style={style}>

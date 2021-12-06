@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeContainer, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeContainer, sizeItem, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const boom = keyframes`
   0% {
@@ -21,7 +21,6 @@ const boom = keyframes`
   }
 `;
 
-
 const LoadContainer = styled.div`
   width: ${props => sizeContainer[props.size] || sizeContainer['default']};
   height: ${props => sizeContainer[props.size] || sizeContainer['default']};
@@ -38,7 +37,7 @@ const Heart = styled.div`
   background-color: ${props => props.color || '#00adb5'};
   position: relative;
   transform: rotate(45deg);
-  animation: ${boom} ${props => props.speed || 2}s ease infinite;
+  animation: ${boom} ${props => props.speed}s ease infinite;
 
   &::before {
     content: '';
@@ -61,14 +60,19 @@ const Heart = styled.div`
     top: -50%;
     right: 0;
   }
-`
+`;
 
-const HeartBoomLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = 'default'}) => {
-    return (
-        <LoadContainer style={style} size={size}>
-            <Heart color={color} speed={speed} size={size}/>
-        </LoadContainer>
-    );
+const HeartBoomLoading: React.FC<LoadingInfo> = ({
+  speed = 2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style} size={size}>
+      <Heart color={color} speed={speed} size={size} />
+    </LoadContainer>
+  );
 };
 
 export default HeartBoomLoading;

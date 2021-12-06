@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, sizeItem, defaultColor } from '../config';
+import { LoadingInfo } from '../@types';
 
 const bouncedelay = keyframes`
   0%,
@@ -119,29 +119,34 @@ const CircleFour2 = styled(circle)`
   bottom: 0;
 `;
 
-const LoopCircleLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, size = "default", speed}) => {
-    return (
-        <LoadContainer style={style}>
-            <ContainerFirst>
-                <CircleFirst color={color} size={size} speed={speed}/>
-                <CircleTwo color={color} size={size} speed={speed}/>
-                <CircleThree color={color} size={size} speed={speed}/>
-                <CircleFour color={color} size={size} speed={speed}/>
-            </ContainerFirst>
-            <ContainerTwo>
-                <CircleFirst1 color={color} size={size} speed={speed}/>
-                <CircleTwo1 color={color} size={size} speed={speed}/>
-                <CircleThree1 color={color} size={size} speed={speed}/>
-                <CircleFour1 color={color} size={size} speed={speed}/>
-            </ContainerTwo>
-            <ContainerThree>
-                <CircleFirst2 color={color} size={size} speed={speed}/>
-                <CircleTwo2 color={color} size={size} speed={speed}/>
-                <CircleThree2 color={color} size={size} speed={speed}/>
-                <CircleFour2 color={color} size={size} speed={speed}/>
-            </ContainerThree>
-        </LoadContainer>
-    );
+const LoopCircleLoading: React.FC<LoadingInfo> = ({
+  speed = 1.2,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadContainer style={style}>
+      <ContainerFirst>
+        <CircleFirst color={color} size={size} speed={speed} />
+        <CircleTwo color={color} size={size} speed={speed} />
+        <CircleThree color={color} size={size} speed={speed} />
+        <CircleFour color={color} size={size} speed={speed} />
+      </ContainerFirst>
+      <ContainerTwo>
+        <CircleFirst1 color={color} size={size} speed={speed} />
+        <CircleTwo1 color={color} size={size} speed={speed} />
+        <CircleThree1 color={color} size={size} speed={speed} />
+        <CircleFour1 color={color} size={size} speed={speed} />
+      </ContainerTwo>
+      <ContainerThree>
+        <CircleFirst2 color={color} size={size} speed={speed} />
+        <CircleTwo2 color={color} size={size} speed={speed} />
+        <CircleThree2 color={color} size={size} speed={speed} />
+        <CircleFour2 color={color} size={size} speed={speed} />
+      </ContainerThree>
+    </LoadContainer>
+  );
 };
 
 export default LoopCircleLoading;

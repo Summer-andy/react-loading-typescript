@@ -1,7 +1,7 @@
 import * as React from 'react';
-import styled, {keyframes} from 'styled-components';
-import {commonStyle, sizeItem} from '../util/style';
-import {LoadingInfo} from '../@types';
+import styled, { keyframes } from 'styled-components';
+import { commonStyle, defaultColor, sizeItem } from '../config';
+import { LoadingInfo } from '../@types';
 
 const bouncedelay = keyframes`
   0%,
@@ -12,7 +12,7 @@ const bouncedelay = keyframes`
   40% {
     -webkit-transform: scale(1);
   }
-`
+`;
 
 const LoadingContainer = styled.div`
   width: 150px;
@@ -23,35 +23,41 @@ const LoadingContainer = styled.div`
 const load = styled.div`
   width: ${props => sizeItem[props.size] || sizeItem['default']};
   height: ${props => sizeItem[props.size] || sizeItem['default']};
-  margin-top: calc(50% - ${props => sizeItem[props.size] || sizeItem['default']} / 2);
+  margin-top: calc(
+    50% - ${props => sizeItem[props.size] || sizeItem['default']} / 2
+  );
   background-color: ${props => props.color || '#00adb5'};
   border-radius: 100%;
   display: inline-block;
   animation: ${bouncedelay} ${props => props.speed || 1.4}s infinite ease-in-out;
   animation-fill-mode: both;
-`
+`;
 
 const LoadFirst = styled(load)`
   animation-delay: -0.48s;
-`
+`;
 
 const LoadTwo = styled(load)`
   animation-delay: -0.32s;
-`
+`;
 
 const LoadThree = styled(load)`
   animation-delay: -0.16s;
+`;
 
-`
-
-const TransverseLoading: React.FC<LoadingInfo> = ({style = commonStyle, color, speed, size = "default"}) => {
-    return (
-        <LoadingContainer style={style}>
-            <LoadFirst color={color} size={size} speed={speed}/>
-            <LoadTwo color={color} size={size} speed={speed}/>
-            <LoadThree color={color} size={size} speed={speed}/>
-        </LoadingContainer>
-    );
+const TransverseLoading: React.FC<LoadingInfo> = ({
+  speed = 1.4,
+  size = 'default',
+  style = commonStyle,
+  color = defaultColor
+}) => {
+  return (
+    <LoadingContainer style={style}>
+      <LoadFirst color={color} size={size} speed={speed} />
+      <LoadTwo color={color} size={size} speed={speed} />
+      <LoadThree color={color} size={size} speed={speed} />
+    </LoadingContainer>
+  );
 };
 
 export default TransverseLoading;
