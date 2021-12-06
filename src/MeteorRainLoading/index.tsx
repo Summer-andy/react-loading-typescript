@@ -1,28 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer, sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const scaling = keyframes`
-  0% {
-    width: 0;
-  }
-  50% {
-    width: 40px;
-  }
-  100% {
-    width: 0;
-  }
-`;
-
-const moveTo = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(60px);
-  }
-`;
+import { createAnimation, createLoading } from '../utils';
+import { scaling, moveTo } from './animate';
 
 const LoadContainer = styled.div`
   width: ${props =>
@@ -40,7 +20,7 @@ const LoadContainer = styled.div`
 
   > div:nth-of-type(2) {
     top: 10%;
-    left: 0%;
+    left: 0;
     animation-delay: 0.8s;
   }
 
@@ -88,16 +68,15 @@ const LoadContainer = styled.div`
 `;
 
 const Star = styled.div`
+  position: absolute;
   height: 2px;
+  border-radius: 50%;
   background: linear-gradient(
     -45deg,
-    ${props => props.color || '#00adb5'},
-    rgba(0, 0, 255, 0)
+    ${({ color }) => color}, rgba(0, 0, 255, 0)
   );
-  position: absolute;
-  border-radius: 50%;
-  animation: ${scaling} ${props => props.speed || 3}s ease-in-out infinite,
-    ${moveTo} ${props => props.speed || 3}s ease-in-out infinite;
+  animation: ${scaling} ${({ speed }) => createAnimation(speed, 'ease-in-out')},
+    ${moveTo} ${({ speed }) => createAnimation(speed, 'ease-in-out')};
 `;
 
 const MeteorRainLoading = ({ speed, size, style, color }) => {

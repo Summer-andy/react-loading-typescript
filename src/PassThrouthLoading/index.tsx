@@ -1,36 +1,29 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const animationChild = keyframes`
-  0% {
-  }
-  100% {
-    margin-left: 92px;
-  }
-`;
+import { createLoading, createAnimation } from '../utils';
+import { animationChild } from './animate';
 
 const Container = styled.div`
+  position: relative;
   width: 100px;
   height: 4px;
-  border-radius: 2px;
   margin: 0 auto;
-  position: relative;
-  background: ${props => props.color || '#00adb5'};
+  border-radius: 2px;
+  background: ${({ color }) => color};
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
+  position: absolute;
+  margin-left: -8px;
   margin-top: ${props =>
     props.size === 'small' ? -3 : props.size === 'large' ? -5 : -5}px;
   border-radius: 50%;
-  background: ${props => props.color || '#00adb5'};
-  position: absolute;
-  margin-left: -8px;
-  animation: ${animationChild} ${props => props.speed || 1}s ease-in infinite
-    alternate;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  background: ${({ color }) => color};
+  animation: ${animationChild}
+    ${({ speed }) => createAnimation(speed, 'ease-in')} alternate;
 `;
 
 // FIXME 拼写问题

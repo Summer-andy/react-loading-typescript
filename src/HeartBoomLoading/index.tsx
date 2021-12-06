@@ -1,62 +1,43 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer, sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const boom = keyframes`
-  0% {
-    transform: rotate(45deg) scale(1);
-  }
-  20% {
-    transform: rotate(45deg) scale(1.1);
-  }
-  40% {
-    transform: rotate(45deg) scale(1);
-  }
-  60% {
-    transform: rotate(45deg) scale(1.2);
-  }
-  100% {
-    transform: rotate(45deg) scale(1);
-  }
-`;
+import { createAnimation, createLoading } from '../utils';
+import { boom } from './animate';
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   position: relative;
+  /* overflow: hidden; */
   display: flex;
   align-items: center;
   justify-content: center;
-  /* overflow: hidden; */
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
 `;
 
 const Heart = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem[props.size]};
-  height: ${props => sizeItem[props.size] || sizeItem[props.size]};
-  background-color: ${props => props.color || '#00adb5'};
   position: relative;
   transform: rotate(45deg);
-  animation: ${boom} ${props => props.speed}s ease infinite;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  background-color: ${({ color }) => color};
+  animation: ${boom} ${({ speed }) => createAnimation(speed, 'ease')};
 
-  &::before {
+  &::before,
+  &::after {
     content: '';
+    position: absolute;
     width: 100%;
     height: 100%;
     border-radius: 50%;
-    background-color: ${props => props.color || '#00adb5'};
-    position: absolute;
+    background-color: ${({ color }) => color};
+  }
+
+  &::before {
     left: -50%;
     bottom: 0;
   }
 
   &::after {
-    content: '';
-    width: 100%;
-    height: 100%;
-    border-radius: 50%;
-    background-color: ${props => props.color || '#00adb5'};
-    position: absolute;
     top: -50%;
     right: 0;
   }

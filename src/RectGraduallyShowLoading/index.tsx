@@ -1,33 +1,7 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { createLoading } from '../utils';
-
-const gradualShowDispear = keyframes`
-  0% {
-    opacity: 0.3;
-  }
-  25% {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.3;
-  }
-  65% {
-    opacity: 1;
-  }
-  100% {
-    opacity: 0.3;
-  }
-`;
-
-const gradualDispear = keyframes`
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-100%)
-  }
-`;
+import { gradualShowDispear, gradualDispear } from './animate';
 
 // TODO 转换为对象
 const LoadContainer = styled.div`
@@ -47,7 +21,7 @@ const RectBig = styled.div`
   z-index: 2;
   left: 0;
   top: 0;
-  animation: ${gradualDispear} ${props => props.speed || 4}s linear infinite;
+  animation: ${gradualDispear} ${({ speed }) => speed}s linear infinite;
 `;
 
 const RectSmallWrap = styled.div`
@@ -61,7 +35,7 @@ const RectSmallWrap = styled.div`
   top: 0;
 
   > div {
-    animation: ${gradualShowDispear} ${props => props.speed || 4}s ease-in-out
+    animation: ${gradualShowDispear} ${({ speed }) => speed}s ease-in-out
       infinite;
   }
 
@@ -70,31 +44,31 @@ const RectSmallWrap = styled.div`
   }
 
   > div:nth-of-type(7) {
-    animation-delay: ${props => (props.speed / 16) * 1 || (4 / 16) * 1}s;
+    animation-delay: ${({ speed }) => speed / 16}s;
   }
 
   > div:nth-of-type(6) {
-    animation-delay: ${props => (props.speed / 16) * 2 || (4 / 16) * 2}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 2}s;
   }
 
   > div:nth-of-type(5) {
-    animation-delay: ${props => (props.speed / 16) * 3 || (4 / 16) * 3}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 3}s;
   }
 
   > div:nth-of-type(4) {
-    animation-delay: ${props => (props.speed / 16) * 4 || (4 / 16) * 4}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 4}s;
   }
 
   > div:nth-of-type(3) {
-    animation-delay: ${props => (props.speed / 16) * 5 || (4 / 16) * 5}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 5}s;
   }
 
   > div:nth-of-type(2) {
-    animation-delay: ${props => (props.speed / 16) * 6 || (4 / 16) * 6}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 6}s;
   }
 
   > div:nth-of-type(1) {
-    animation-delay: ${props => (props.speed / 16) * 7 || (4 / 16) * 7}s;
+    animation-delay: ${({ speed }) => (speed / 16) * 7}s;
   }
 `;
 
@@ -108,7 +82,7 @@ const RectGraduallyShowLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} speed={speed} color={color} size={size}>
       {/* <RectBig speed={speed} color={color} size={size} /> */}
-      <RectSmallWrap>
+      <RectSmallWrap speed={speed}>
         {Array.from(Array(8)).map((item, index) => (
           <RectSmall speed={speed} color={color} size={size} key={index} />
         ))}

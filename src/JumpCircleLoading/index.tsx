@@ -1,46 +1,34 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer, sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const bounce = keyframes`
-  0% {
-    transform: translateY(0) scaleX(1.2) scaleY(0.8);
-  }
-  25% {
-    transform: translateY(-10px) scaleX(1) scaleY(1);
-  }
-  100% {
-    background-color: #f9c094;
-    transform: translateY(-40px);
-  }
-`;
+import { createLoading, createAnimation } from '../utils';
+import { bounce } from './animate';
 
 const LoadContainer = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
   position: relative;
   /* overflow: hidden; */
   display: flex;
-  justify-content: center;
   align-items: flex-end;
+  justify-content: center;
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
 `;
 
 const Circle = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
   border-radius: 50%;
-  background-color: ${props => props.color || '#00adb5'};
-  animation: ${bounce} ${props => props.speed}s ease-out infinite alternate;
+  background-color: ${({ color }) => color};
+  animation: ${bounce} ${({ speed }) => createAnimation(speed, 'ease-out')} alternate;
 `;
 
 const BottomReac = styled.div`
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: 4px;
   position: absolute;
-  bottom: 0;
   left: 0;
-  background-color: ${props => props.color || '#00adb5'};
+  bottom: 0;
+  height: 4px;
+  width: ${({ size }) => sizeContainer[size]};
+  background-color: ${({ color }) => color};
 `;
 
 const JumpCircleLoading = ({ speed, size, style, color }) => {

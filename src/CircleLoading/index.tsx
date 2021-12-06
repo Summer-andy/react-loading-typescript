@@ -4,9 +4,11 @@ import { sizeItem } from '../config';
 import { createLoading, createAnimation } from '../utils';
 import { load } from './animate';
 
+// 新增了居中
 const LoadingContainer = styled.div`
   width: 100px;
   height: 100px;
+  text-align: center;
 `;
 
 const ItemSpan = styled.span`

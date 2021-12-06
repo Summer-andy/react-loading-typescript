@@ -1,34 +1,23 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeContainer } from '../config';
 import { createLoading } from '../utils';
-
-const stretchdelay = keyframes`
-  0%,
-  40%,
-  100% {
-    -webkit-transform: scaleY(0.4);
-  }
-  20% {
-    -webkit-transform: scaleY(1);
-  }
-`;
+import { stretchdelay } from './animate';
 
 const LoadContainer = styled.div`
   width: 100px;
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  text-align: center;
+  height: ${({ size }) => sizeContainer[size]};
   font-size: 10px;
+  text-align: center;
 `;
 
 const box = styled.div`
-  background-color: ${props => props.color || '#00adb5'};
+  display: inline-block;
   height: 100%;
   width: 6px;
-  display: inline-block;
   margin-left: 5px;
-  animation: ${stretchdelay} ${props => props.speed || 1.2}s infinite
-    ease-in-out;
+  background-color: ${({ color }) => color};
+  animation: ${stretchdelay} ${({ speed }) => speed}s infinite ease-in-out;
 `;
 
 const BoxLoadingFirst = styled(box)`

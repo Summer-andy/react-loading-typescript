@@ -1,20 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
+import styled from 'styled-components';
 import { sizeItem } from '../config';
-import { createLoading } from '../utils';
-
-const bouncedelay = keyframes`
-  0%,
-  80%,
-  100% {
-    transform: scale(0);
-    -webkit-transform: scale(0);
-  }
-  40% {
-    transform: scale(1);
-    -webkit-transform: scale(1);
-  }
-`;
+import { createLoading, createAnimation } from '../utils';
+import { bouncedelay } from './animate';
 
 const LoadContainer = styled.div`
   position: absolute;
@@ -29,12 +17,13 @@ const container = styled.div`
 `;
 
 const circle = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
-  background-color: ${props => props.color || '#00adb5'};
-  border-radius: 100%;
   position: absolute;
-  animation: ${bouncedelay} ${props => props.speed || 1.2}s infinite ease-in-out;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  border-radius: 100%;
+  background-color: ${({ color }) => color};
+  animation: ${bouncedelay}
+    ${({ speed }) => createAnimation(speed, 'ease-in-out')};
   animation-fill-mode: both;
 `;
 
@@ -54,21 +43,21 @@ const CircleFirst = styled(circle)`
 `;
 
 const CircleTwo = styled(circle)`
-  animation-delay: -0.9s;
   top: 0;
   right: 0;
+  animation-delay: -0.9s;
 `;
 
 const CircleThree = styled(circle)`
-  animation-delay: -0.6s;
   right: 0;
   bottom: 0;
+  animation-delay: -0.6s;
 `;
 
 const CircleFour = styled(circle)`
-  animation-delay: -0.3s;
   left: 0;
   bottom: 0;
+  animation-delay: -0.3s;
 `;
 
 const CircleFirst1 = styled(circle)`
@@ -78,21 +67,21 @@ const CircleFirst1 = styled(circle)`
 `;
 
 const CircleTwo1 = styled(circle)`
-  animation-delay: -0.8s;
   top: 0;
   right: 0;
+  animation-delay: -0.8s;
 `;
 
 const CircleThree1 = styled(circle)`
-  animation-delay: -0.5s;
   right: 0;
   bottom: 0;
+  animation-delay: -0.5s;
 `;
 
 const CircleFour1 = styled(circle)`
-  animation-delay: -0.2s;
   left: 0;
   bottom: 0;
+  animation-delay: -0.2s;
 `;
 
 const CircleFirst2 = styled(circle)`
@@ -102,21 +91,21 @@ const CircleFirst2 = styled(circle)`
 `;
 
 const CircleTwo2 = styled(circle)`
-  animation-delay: -0.7s;
   top: 0;
   right: 0;
+  animation-delay: -0.7s;
 `;
 
 const CircleThree2 = styled(circle)`
-  animation-delay: -0.4s;
   right: 0;
   bottom: 0;
+  animation-delay: -0.4s;
 `;
 
 const CircleFour2 = styled(circle)`
-  animation-delay: -0.1s;
   left: 0;
   bottom: 0;
+  animation-delay: -0.1s;
 `;
 
 const LoopCircleLoading = ({ speed, size, style, color }) => {
