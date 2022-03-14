@@ -1,7 +1,7 @@
-export interface LoadingInfo  {
-  style: object;
-  speed: number;
-  color: string;
-  size: string;
+export interface LoadingInfo {
+  size?: string;
+  style?: object;
+  speed?: number;
+  color?: string;
   inColor?: string;
 }
