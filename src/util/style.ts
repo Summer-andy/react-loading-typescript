@@ -1,11 +1,10 @@
-
-interface size {
+interface Size {
   small: string;
   default: string;
   large: string;
 }
 
-interface commonInterFace {
+interface CommonInterFace {
   margin: string;
   position: string;
   left: number;
@@ -14,7 +13,7 @@ interface commonInterFace {
   bottom: number;
 }
 
-const commonStyle : commonInterFace = {
+const commonStyle: CommonInterFace = {
   margin: 'auto',
   position: 'absolute',
   left: 0,
@@ -23,22 +22,22 @@ const commonStyle : commonInterFace = {
   bottom: 0
 };
 
-const sizeItem : size = {
+const sizeItem: Size = {
   small: '10px',
   default: '12px',
   large: '14px'
-}
+};
 
-const sizeContainer : size = {
+const sizeContainer: Size = {
   small: '24px',
   default: '30px',
   large: '36px'
-}
+};
 
-const borderRadiusContainerSize : size = {
+const borderRadiusContainerSize: Size = {
   small: '12px',
   default: '15px',
   large: '18px'
-}
+};
 
-export  { commonStyle, sizeItem, sizeContainer, borderRadiusContainerSize }
+export { commonStyle, sizeItem, sizeContainer, borderRadiusContainerSize };
