@@ -1,21 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
-const animate1 = keyframes`
-	100% {
-	transform:rotate(360deg)
-}
-`;
-
-const animate2 = keyframes`
-	0%,100% {
-	transform:scale(0)
-}
-50% {
-	transform:scale(1)
-}
-`;
+import styled from 'styled-components';
+import { sizeContainer } from '../config';
+import { createLoading } from '../utils';
+import { animate1, animate2 } from './animate';
 
 const LoadingContainer = styled.div`
   position: relative;
@@ -26,24 +13,27 @@ const LoadingContainer = styled.div`
 `;
 
 const Item = styled.div`
-	position:absolute;
-	top:0;
-	width:25px;
-	height:25px;
-	border-radius:100%;
-	background-color: ${props => props.color || '#00adb5'};
-  animation: ${animate2} ${props => props.speed || 2}s ease-in-out infinite;
+  position: absolute;
+  top: 0;
+  width: 25px;
+  height: 25px;
+  border-radius: 100%;
+  background-color: ${({ color }) => color};
+  animation: ${animate2} ${({ speed }) => speed}s ease-in-out infinite;
 `;
+
+//TODO 可以考虑转换为伪元素
 
 const ItemOne = styled(Item)``;
 
 const ItemTwo = styled(Item)`
-  animation-delay: -${props => props.speed  / 2 || 1}s;
-  top:auto;
-	bottom:0;
+  animation-delay: -${props => props.speed / 2}s;
+  top: auto;
+  bottom: 0;
 `;
 
-const BlockRotateLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default' }) => {
+// TODO size 参数暂未生效
+const BlockRotateLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <ItemOne color={color} speed={speed} />
@@ -52,4 +42,4 @@ const BlockRotateLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color,
   );
 };
 
-export default BlockRotateLoading;
+export default createLoading(BlockRotateLoading)(2);

@@ -1,20 +1,13 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeContainer } from '../util/style';
-import { LoadingInfo } from '../type/index';
-const animate = keyframes`
-  50% {
-    transform: rotateY(-180deg);
-  }
-  100% {
-    transform: rotateY(-180deg) rotateX(-180deg);
-  }
-`;
+import styled from 'styled-components';
+import { sizeContainer } from '../config';
+import { createLoading, createAnimation } from '../utils';
+import { animate } from './animate';
 
 const LoadingContainer = styled.div`
-  perspective: 120px;
   width: 120px;
   height: 120px;
+  perspective: 120px;
   position: relative;
 `;
 
@@ -25,14 +18,14 @@ const Item = styled.div`
   right: 0;
   top: 0;
   bottom: 0;
-  width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-  height: ${props => sizeContainer[props.size] || sizeContainer['default']};
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
   transform: rotate(0);
-  background: ${props => props.color || '#00adb5'};
-  animation: ${animate} ${props => props.speed || 1}s infinite;
+  background: ${({ color }) => color};
+  animation: ${animate} ${({ speed }) => createAnimation(speed, 'ease')};
 `;
 
-const BlockReserveLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
+const BlockReserveLoading = ({ speed, size, style, color }) => {
   return (
     <LoadingContainer style={style}>
       <Item color={color} speed={speed} size={size} />
@@ -40,4 +33,4 @@ const BlockReserveLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color
   );
 };
 
-export default BlockReserveLoading;
+export default createLoading(BlockReserveLoading)(1);

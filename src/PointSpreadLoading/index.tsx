@@ -1,62 +1,51 @@
-import  * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
-const animation = keyframes`
-  0% {
-    transform: scale(1);
-  }
-  50%,
-    75% {
-    transform: scale(2.5);
-  }
-  78%, 100% {
-    opacity: 0;
-  }
-`;
+import * as React from 'react';
+import styled from 'styled-components';
+import { sizeItem } from '../config';
+import { createLoading } from '../utils';
+import { animation } from './animate';
 
 const Container = styled.div`
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 120px;
+  place-items: center;
   width: 120px;
+  height: 120px;
   overflow: hidden;
   animation-delay: 1s;
 `;
 
 const Item = styled.div`
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
-  border-radius: 50%;
-  background-color: ${props => props.color || '#00adb5'};
-  margin:  7px;
   display: flex;
-  justify-content: center;
-  align-items: center;
-  &:before {
+  place-items: center;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  border-radius: 50%;
+  background-color: ${({ color }) => color};
+  margin: 7px;
+
+  &::before {
     content: '';
-    width: ${props => sizeItem[props.size] || sizeItem['default']};
-    height: ${props => sizeItem[props.size] || sizeItem['default']};
+    width: ${({ size }) => sizeItem[size]};
+    height: ${({ size }) => sizeItem[size]};
     border-radius: 50%;
-    background-color:  ${props => props.color || '#00adb5'};
+    background-color: ${({ color }) => color};
     opacity: 0.7;
     animation: ${animation} 2s infinite cubic-bezier(0, 0, 0.49, 1.02);
-    animation-delay: ${props => props.delay}ms;
+    animation-delay: ${({ delay }) => delay}ms;
     transition: 0.5s all ease;
     transform: scale(1);
   }
 `;
 
-const PointSpreadLoading: React.FC<LoadingInfo> = ({ speed, color, style = commonStyle, size = 'default' }) => {
+// TODO 时间参数未生效
+const PointSpreadLoading = ({ speed, size, style, color }) => {
   return (
     <Container style={style}>
-      <Item delay="250" speed={speed} color={color} size={size}></Item>
-      <Item delay="500" speed={speed} color={color} size={size}></Item>
-      <Item delay="750" speed={speed} color={color} size={size}></Item>
-      <Item delay="1000" speed={speed} color={color} size={size}></Item>
+      <Item delay="250" speed={speed} color={color} size={size} />
+      <Item delay="500" speed={speed} color={color} size={size} />
+      <Item delay="750" speed={speed} color={color} size={size} />
+      <Item delay="1000" speed={speed} color={color} size={size} />
     </Container>
   );
 };
 
-export default PointSpreadLoading;
+export default createLoading(PointSpreadLoading)(2);

@@ -1,40 +1,43 @@
 import * as React from 'react';
-import { shadow, animate } from './animate';
-import { commonStyle, sizeContainer } from '../util/style';
 import styled from 'styled-components';
-import { LoadingInfo } from '../type/index';
+import { sizeContainer } from '../config';
+import { createLoading, createAnimation } from '../utils';
+import { shadow, animate } from './animate';
+
 const LoadContainer = styled.div`
-    width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-    height: ${props => sizeContainer[props.size] || sizeContainer['default']};
-    &:before {
-      content: '';
-      width:${props => sizeContainer[props.size] || sizeContainer['default']};
-      height: 5px;
-      background: #000;
-      opacity: 0.1;
-      position: absolute;
-      top: calc(${props => sizeContainer[props.size] || sizeContainer['default']} + 10px) ;
-      left: 0;
-      border-radius: 50%;
-      animation: ${animate} ${props => props.speed || 0.5}s linear infinite;
-    }
-    &:after {
-      content: '';
-      width: ${props => sizeContainer[props.size] || sizeContainer['default']};
-      height:${props => sizeContainer[props.size] || sizeContainer['default']};
-      background: ${props => props.color || '#00adb5'};
-      animation: ${shadow} ${props => props.speed || 0.5}s linear infinite;
-      position: absolute;
-      top: 0;
-      left: 0;
-      border-radius: 3px;
-    }
+  width: ${({ size }) => sizeContainer[size]};
+  height: ${({ size }) => sizeContainer[size]};
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(${({ size }) => sizeContainer[size]} + 10px);
+    left: 0;
+    width: ${({ size }) => sizeContainer[size]};
+    height: 5px;
+    border-radius: 50%;
+    background: #000;
+    opacity: 0.1;
+    animation: ${animate} ${({ speed }) => createAnimation(speed)};
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: ${({ size }) => sizeContainer[size]};
+    height: ${({ size }) => sizeContainer[size]};
+    border-radius: 3px;
+    background: ${({ color }) => color};
+    animation: ${shadow} ${({ speed }) => createAnimation(speed)};
+  }
 `;
 
-const BoxLoading : React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size="default" }) => {
+const BoxLoading = ({ speed, size, style, color }) => {
   return (
-    <LoadContainer style={style} color={color} speed={speed} size={size}></LoadContainer>
+    <LoadContainer style={style} color={color} speed={speed} size={size} />
   );
 };
 
-export default BoxLoading;
+export default createLoading(BoxLoading)(0.5);

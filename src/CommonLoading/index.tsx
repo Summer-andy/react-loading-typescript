@@ -1,33 +1,8 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle, sizeItem } from '../util/style';
-import { LoadingInfo } from '../type/index';
-
-const load = keyframes`
-       0%{
-            transform: rotate(0deg);
-        }
-        10%{
-            transform: rotate(45deg);
-        }
-        50%{
-            opacity: 1;
-            transform: rotate(160deg);
-        }
-        62%{
-            opacity: 0;
-        }
-        65%{
-            opacity: 0;
-            transform: rotate(200deg);
-        }
-        90%{
-            transform: rotate(340deg);
-        }
-        100%{
-            transform: rotate(360deg);
-        }
-`;
+import styled from 'styled-components';
+import { sizeItem } from '../config';
+import { createAnimation, createLoading } from '../utils';
+import { load } from './animate';
 
 const Container = styled.div`
   width: 50px;
@@ -35,10 +10,10 @@ const Container = styled.div`
 `;
 
 const ItemDiv = styled.div`
+  position: absolute;
   width: 100%;
   height: 100%;
-  position: absolute;
-  animation: ${load} ${props => props.speed || 2}s linear infinite;
+  animation: ${load} ${({ speed }) => createAnimation(speed)};
 `;
 
 const ItemDiv1 = styled(ItemDiv)`
@@ -58,18 +33,17 @@ const ItemDiv4 = styled(ItemDiv)`
 `;
 
 const ItemSpan = styled.span`
-  display: inline-block;
-  height: ${props => sizeItem[props.size] || sizeItem['default']};
-  width: ${props => sizeItem[props.size] || sizeItem['default']};
-  border-radius: 50%;
-  background: ${props => props.color || '#00adb5'};
   position: absolute;
   left: 50%;
+  width: ${({ size }) => sizeItem[size]};
+  height: ${({ size }) => sizeItem[size]};
+  border-radius: 50%;
   margin-top: -10px;
   margin-left: -10px;
+  background: ${({ color }) => color};
 `;
 
-const CommonLoading: React.FC<LoadingInfo> = ({ style = commonStyle, speed, color, size = 'default' }) => {
+const CommonLoading = ({ speed, size, style, color }) => {
   return (
     <Container {...{ style, speed, color, size }}>
       <ItemDiv1 speed={speed}>
@@ -88,4 +62,4 @@ const CommonLoading: React.FC<LoadingInfo> = ({ style = commonStyle, speed, colo
   );
 };
 
-export default CommonLoading;
+export default createLoading(CommonLoading)(2);

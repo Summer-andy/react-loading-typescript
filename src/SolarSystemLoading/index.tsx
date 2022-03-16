@@ -1,96 +1,105 @@
 import * as React from 'react';
-import styled, { keyframes } from 'styled-components';
-import { commonStyle } from '../util/style';
-import { LoadingInfo } from '../type/index';
+import styled from 'styled-components';
+import { createLoading } from '../utils';
+import { rotate } from './animate';
 
-const rotate = keyframes`
-  100% {
-    transform: rotate(360deg);
-  }
-`;
-
+const sizeContainer = {
+  small: 44,
+  default: 50,
+  large: 56
+};
 
 const LoadContainer = styled.div`
-  width: ${props => props.size === 'small' ? 44 : (props.size === 'large' ? 56 : 50)}px;
-  height: ${props => props.size === 'small' ? 44 : (props.size === 'large' ? 56 : 50)}px;
   position: relative;
   /* overflow: hidden; */
+  width: ${({ size }) => sizeContainer[size]}px;
+  height: ${({ size }) => sizeContainer[size]}px;
 `;
 
 const Sun = styled.div`
-  width: ${props => props.size === 'small' ? 2 : (props.size === 'large' ? 6 : 4)}px;;
-  height: ${props => props.size === 'small' ? 2 : (props.size === 'large' ? 6 : 4)}px;;
-  border-radius: 100%;
-  background-color: ${props => props.color || '#00adb5'};
   position: absolute;
-  left: 50%;
   top: 50%;
-  margin-left: ${props => props.size === 'small' ? -1 : (props.size === 'large' ? -3 : -2)}px;
-  margin-top: ${props => props.size === 'small' ? -1 : (props.size === 'large' ? -3 : -2)}px;
-`
+  left: 50%;
+  margin-left: ${({ size }) =>
+    size === 'small' ? -1 : size === 'large' ? -3 : -2}px;
+  margin-top: ${({ size }) =>
+    size === 'small' ? -1 : size === 'large' ? -3 : -2}px;
+  width: ${({ size }) => (size === 'small' ? 2 : size === 'large' ? 6 : 4)}px;
+  height: ${({ size }) => (size === 'small' ? 2 : size === 'large' ? 6 : 4)}px;
+  border-radius: 100%;
+  background-color: ${({ color }) => color};
+`;
 
 const FirstTrack = styled.div`
-  width: ${props => props.size === 'small' ? 24 : (props.size === 'large' ? 36 : 30)}px;
-  height: ${props => props.size === 'small' ? 24 : (props.size === 'large' ? 36 : 30)}px;
-  border-radius: 100%;
-  border: 1px solid;
-  border-color: ${props => props.color || '#00adb5'};
   position: absolute;
-  left: 50%;
   top: 50%;
-  margin-left: ${props => props.size === 'small' ? -12 : (props.size === 'large' ? -18 : -15)}px;
-  margin-top: ${props => props.size === 'small' ? -12 : (props.size === 'large' ? -18 : -15)}px;
+  left: 50%;
   box-sizing: border-box;
-  animation: ${rotate} ${props => props.speed || 2}s linear infinite;
-`
+  width: ${({ size }) =>
+    size === 'small' ? 24 : size === 'large' ? 36 : 30}px;
+  height: ${({ size }) =>
+    size === 'small' ? 24 : size === 'large' ? 36 : 30}px;
+  border-radius: 100%;
+  border: 1px solid ${({ color }) => color};
+  margin-left: ${({ size }) =>
+    size === 'small' ? -12 : size === 'large' ? -18 : -15}px;
+  margin-top: ${({ size }) =>
+    size === 'small' ? -12 : size === 'large' ? -18 : -15}px;
+  animation: ${rotate} ${props => props.speed}s linear infinite;
+`;
 
 const Earth = styled.div`
-  width: ${props => props.size === 'small' ? 4 : (props.size === 'large' ? 8 : 6)}px;
-  height: ${props => props.size === 'small' ? 4 : (props.size === 'large' ? 8 : 6)}px;
-  border-radius: 100%;
-  background-color: ${props => props.color || '#00adb5'};
   position: absolute;
-  left: ${props => props.size === 'small' ? 1 : (props.size === 'large' ? 1 : 0)}px;
-  top: ${props => props.size === 'small' ? 1 : (props.size === 'large' ? 3 : 2)}px;
-`
+  top: ${({ size }) => (size === 'small' ? 1 : size === 'large' ? 3 : 2)}px;
+  left: ${({ size }) => (size === 'small' ? 1 : size === 'large' ? 1 : 0)}px;
+  width: ${({ size }) => (size === 'small' ? 4 : size === 'large' ? 8 : 6)}px;
+  height: ${({ size }) => (size === 'small' ? 4 : size === 'large' ? 8 : 6)}px;
+  border-radius: 100%;
+  background-color: ${({ color }) => color};
+`;
 
 const SecondTrack = styled.div`
-  width: ${props => props.size === 'small' ? 54 : (props.size === 'large' ? 66 : 60)}px;
-  height: ${props => props.size === 'small' ? 54 : (props.size === 'large' ? 66 : 60)}px;
-  border-radius: 100%;
-  border: 1px solid;
-  border-color: ${props => props.color || '#00adb5'};
   position: absolute;
-  left: 50%;
   top: 50%;
-  margin-left: ${props => props.size === 'small' ? -27 : (props.size === 'large' ? -33 : -30)}px;
-  margin-top: ${props => props.size === 'small' ? -27 : (props.size === 'large' ? -33 : -30)}px;
+  left: 50%;
+  margin-left: ${({ size }) =>
+    size === 'small' ? -27 : size === 'large' ? -33 : -30}px;
+  margin-top: ${({ size }) =>
+    size === 'small' ? -27 : size === 'large' ? -33 : -30}px;
   box-sizing: border-box;
-  animation: ${rotate} ${props => props.speed * 1.5 || 3}s linear infinite;
-`
+  width: ${({ size }) =>
+    size === 'small' ? 54 : size === 'large' ? 66 : 60}px;
+  height: ${({ size }) =>
+    size === 'small' ? 54 : size === 'large' ? 66 : 60}px;
+  border-radius: 100%;
+  border: 1px solid ${({ color }) => color};
+
+  animation: ${rotate} ${({ speed }) => speed * 1.5}s linear infinite;
+`;
 
 const Mars = styled.div`
-  width: ${props => props.size === 'small' ? 6 : (props.size === 'large' ? 10 : 8)}px;
-  height: ${props => props.size === 'small' ? 6 : (props.size === 'large' ? 10 : 8)}px;
-  border-radius: 100%;
-  background-color: ${props => props.color || '#00adb5'};
   position: absolute;
-  left: ${props => props.size === 'small' ? 6 : (props.size === 'large' ? 8 : 7)}px;
-  top: ${props => props.size === 'small' ? 1 : (props.size === 'large' ? 3 : 2)}px;
-`
+  top: ${({ size }) => (size === 'small' ? 1 : size === 'large' ? 3 : 2)}px;
+  left: ${({ size }) => (size === 'small' ? 6 : size === 'large' ? 8 : 7)}px;
+  width: ${({ size }) => (size === 'small' ? 6 : size === 'large' ? 10 : 8)}px;
+  height: ${({ size }) => (size === 'small' ? 6 : size === 'large' ? 10 : 8)}px;
+  border-radius: 100%;
+  background-color: ${({ color }) => color};
+`;
 
-const SolarSystemLoading: React.FC<LoadingInfo> = ({ style = commonStyle, color, speed, size = 'default' }) => {
+// TODO 默认时间暂时分不出来
+const SolarSystemLoading = ({ speed, size, style, color }) => {
   return (
     <LoadContainer style={style} size={size}>
-      <Sun color={color} size={size}/>
+      <Sun color={color} size={size} />
       <FirstTrack color={color} speed={speed} size={size}>
-        <Earth color={color} size={size}/>
+        <Earth color={color} size={size} />
       </FirstTrack>
       <SecondTrack color={color} speed={speed} size={size}>
-        <Mars color={color} size={size}/>
+        <Mars color={color} size={size} />
       </SecondTrack>
     </LoadContainer>
   );
 };
 
-export default SolarSystemLoading;
+export default createLoading(SolarSystemLoading)(2);
