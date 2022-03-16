@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BlockReserveLoading } from '../src';
+import { DisappearedLoading } from '../src';
 
-storiesOf('BlockReserveLoading', module)
+storiesOf('DisappearedLoading', module)
   .addDecorator(withKnobs)
-  .add('BlockReserveLoading', () => {
-    return <BlockReserveLoading />;
+  .add('DisappearedLoading', () => {
+    return <DisappearedLoading />;
   });

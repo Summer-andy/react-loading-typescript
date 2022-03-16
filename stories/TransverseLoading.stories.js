@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BlockReserveLoading } from '../src';
+import { TransverseLoading } from '../src';
 
-storiesOf('BlockReserveLoading', module)
+storiesOf('TransverseLoading', module)
   .addDecorator(withKnobs)
-  .add('BlockReserveLoading', () => {
-    return <BlockReserveLoading />;
+  .add('TransverseLoading', () => {
+    return <TransverseLoading />;
   });

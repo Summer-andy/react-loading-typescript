@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { storiesOf } from '@storybook/react';
 import { withKnobs } from '@storybook/addon-knobs';
-import { BlockReserveLoading } from '../src';
+import { SolarSystemLoading } from '../src';
 
-storiesOf('BlockReserveLoading', module)
+storiesOf('SolarSystemLoading', module)
   .addDecorator(withKnobs)
-  .add('BlockReserveLoading', () => {
-    return <BlockReserveLoading />;
+  .add('SolarSystemLoading', () => {
+    return <SolarSystemLoading />;
   });
