@@ -23,13 +23,13 @@
 
 #### 🛠 安装
 
-```
+```bash
 npm install react-loadingg
 ```
 
 #### 📦 使用
 
-```
+```tsx
 import { BoxLoading } from 'react-loadingg';
 
 <BoxLoading />;
@@ -39,58 +39,61 @@ import { BoxLoading } from 'react-loadingg';
 
 #### 📕 API
 
-| 参数          |  说明        | 类型          | 默认值  |
-| ------------ | ------------ | ------------ | ------------ |
-| color  | 设置颜色，支持16进制与RGB | string  |  '#00adb5' |
-| speed  | 设置动画速度  | number(秒)  | - |
-| size   | 设置组件大小，可选值为 `small` `default` `large`  | string  |  'default' |
-| style  | 设置组件样式  | Object  |  - |
+| 参数  | 说明                                             | 类型       | 默认值    |
+| ----- | ------------------------------------------------ | ---------- | --------- |
+| color | 设置颜色，支持 16 进制与 RGB                     | string     | '#00adb5' |
+| speed | 设置动画速度                                     | number(秒) | -         |
+| size  | 设置组件大小，可选值为 `small` `default` `large` | string     | 'default' |
+| style | 设置组件样式                                     | Object     | -         |
 
 #### 📝 组件列表
 
-| 组件                 | color | speed | size  | style | 
-| -------------------- | ----- | ----- | ----- | ----- | 
-| BabelLoading         | ✅    | ✅    | ✅   | ✅    |
-| BlockLoading         | ✅    | ✅    | ✅   | ✅    | 
-| BlockReserveLoading  | ✅    | ✅    | ✅   | ✅    | 
-| BoxLoading           | ✅    | ✅    | ✅   | ✅    | 
-| CircleLoading        | ✅    | ✅    | ✅   | ✅    | 
-| CircleToBlockLoading | ✅    | ✅    | ✅   | ✅    | 
-| CommonLoading        | ✅    | ✅    | ✅   | ✅    | 
-| DisappearedLoading   | ✅    | ✅    | ✅   | ✅    | 
-| LoopCircleLoading    | ✅    | ✅    | ✅   | ✅    | 
-| NineCellLoading      | ✅    | ✅    | ✅   | ✅    | 
-| TouchBallLoading     | ✅    | ✅    | ✅   | ✅    | 
-| TransverseLoading    | ✅    | ✅    | ✅   | ✅    | 
-| WaveLoading          | ✅    | ✅    | ✅   | ✅    | 
-| WaveTopBottomLoading | ✅    | ✅    | ✅   | ✅    | 
-| WindMillLoading      | ✅    | ✅    | ✅   | ✅    | 
-| JumpCircleLoading    | ✅    | ✅    | ✅   | ✅    | 
-| MeteorRainLoading    | ✅    | ✅    | ✅   | ✅    | 
-| RotateCircleLoading  | ✅    | ✅    | ✅   | ✅    | 
-| StickyBallLoading    | ✅    | ✅    | ✅   | ✅    | 
-| SemipolarLoading     | ✅    | ✅    | ✅   | ✅    | 
-| SolarSystemLoading   | ✅    | ✅    | ✅   | ✅    |
-| LadderLoading        | ✅    | ✅    | ✅   | ✅    |
-| HeartBoomLoading     | ✅    | ✅    | ✅   | ✅    |
-| RollBoxLoading       | ✅    | ✅    | ✅   | ✅    |
-| RectGraduallyShowLoading   | ✅    | ✅    | ✅   | ✅    |
-| PointSpreadLoading   | ✅    | ✅    | ✅   | ✅    |
-| ThreeHorseLoading   | ✅    | ✅    | ✅   | ✅    |
-| PassThrouthLoading   | ✅    | ✅    | ✅   | ✅    |
-| CoffeeLoading   | ✅    | ✅    | ✅   | ✅    |
-| BatteryLoading   | ✅    | ✅    | ✅   | ✅    |
-| DiamonLoading   | ✅    | ✅    |  🔨  | ✅    |
-| EatLoading   | ✅    | ✅    |  🔨  | ✅    |
+| 组件                     | color | speed | size | style |
+| ------------------------ | ----- | ----- | ---- | ----- |
+| BabelLoading             | ✅    | ✅    | ✅   | ✅    |
+| BlockLoading             | ✅    | ✅    | ✅   | ✅    |
+| BlockReserveLoading      | ✅    | ✅    | ✅   | ✅    |
+| BoxLoading               | ✅    | ✅    | ✅   | ✅    |
+| CircleLoading            | ✅    | ✅    | ✅   | ✅    |
+| CircleToBlockLoading     | ✅    | ✅    | ✅   | ✅    |
+| CommonLoading            | ✅    | ✅    | ✅   | ✅    |
+| DisappearedLoading       | ✅    | ✅    | ✅   | ✅    |
+| LoopCircleLoading        | ✅    | ✅    | ✅   | ✅    |
+| NineCellLoading          | ✅    | ✅    | ✅   | ✅    |
+| TouchBallLoading         | ✅    | ✅    | ✅   | ✅    |
+| TransverseLoading        | ✅    | ✅    | ✅   | ✅    |
+| WaveLoading              | ✅    | ✅    | ✅   | ✅    |
+| WaveTopBottomLoading     | ✅    | ✅    | ✅   | ✅    |
+| WindMillLoading          | ✅    | ✅    | ✅   | ✅    |
+| JumpCircleLoading        | ✅    | ✅    | ✅   | ✅    |
+| MeteorRainLoading        | ✅    | ✅    | ✅   | ✅    |
+| RotateCircleLoading      | ✅    | ✅    | ✅   | ✅    |
+| StickyBallLoading        | ✅    | ✅    | ✅   | ✅    |
+| SemipolarLoading         | ✅    | ✅    | ✅   | ✅    |
+| SolarSystemLoading       | ✅    | ✅    | ✅   | ✅    |
+| LadderLoading            | ✅    | ✅    | ✅   | ✅    |
+| HeartBoomLoading         | ✅    | ✅    | ✅   | ✅    |
+| RollBoxLoading           | ✅    | ✅    | ✅   | ✅    |
+| RectGraduallyShowLoading | ✅    | ✅    | ✅   | ✅    |
+| PointSpreadLoading       | ✅    | ✅    | ✅   | ✅    |
+| ThreeHorseLoading        | ✅    | ✅    | ✅   | ✅    |
+| PassThrouthLoading       | ✅    | ✅    | ✅   | ✅    |
+| CoffeeLoading            | ✅    | ✅    | ✅   | ✅    |
+| BatteryLoading           | ✅    | ✅    | ✅   | ✅    |
+| DiamonLoading            | ✅    | ✅    | 🔨   | ✅    |
+| EatLoading               | ✅    | ✅    | 🔨   | ✅    |
+
 #### ⌨️ 组件开发
 
 首次运行项目
+
 ```bash
 $ git clone https://github.com/sixiaodong123/react-loading
 $ npm run dev
 ```
 
 `P.S.`: 若启动不成功，请先安装`yarn`
+
 ```bash
 npm install -g yarn
 ```
@@ -134,11 +137,13 @@ $ npm run release
 - Bug 修改(bug/xxx)
 
 #### FAQ
-##### 🛎 我只想用一个```BabelLoading```，但似乎我必须 import 整个 react-loadingg:
+
+##### 🛎 我只想用一个`BabelLoading`，但似乎我必须 import 整个 react-loadingg:
+
 ##### 试试[react-loading-demand](https://github.com/sixiaodong123/react-loading-demand),或者用下面这种方式来按需加载
 
+```tsx
+import BabelLoading from 'react-loadingg/lib/component/BabelLoading';
 ```
-import BabelLoading from 'react-loadingg/lib/component/BabelLoading'
-```
-  
+
 ##### 🛎 组件默认完全居中, 如果你想修改组件的样式,那么组件默认的完全居中的样式会被覆盖。

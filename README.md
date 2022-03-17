@@ -13,25 +13,23 @@
 
 </div>
 
-
-
 ## Introduction
 
 `React-Loading` is a React-based Loading animation component library includes many exquisite and beautiful loading components. It will effectively relieve the user's anxiety when you give loading dynamics tips at the appropriate place and moment in your project. This component library supports on-demand loading, so pick a favorite Loading component now to enrich your project ~
 
-
 🎉 [check demo](http://139.196.82.33:8080/iframe.html?id=demo--demo)
+
 ## Quick Start
 
 #### 🛠 Install
 
-```
+```bash
 npm install react-loadingg
 ```
 
 #### 📦 Use
 
-```
+```tsx
 import { BoxLoading } from 'react-loadingg';
 
 <BoxLoading />;
@@ -41,58 +39,61 @@ import { BoxLoading } from 'react-loadingg';
 
 #### 📕 API
 
-| Parameter          |  Description        | Type          | Default  |
-| ------------ | ------------ | ------------ | ------------ |
-| color  | Set color, support hexadecimal and RGB | string  |  '#00adb5' |
-| speed  | Set animation speed  | number(s)  | - |
-| size   | Set the component size, the optional value is `small` `default` `large`  | string  |  'default' |
-| style  | Style the component  | Object  |  - |
+| Parameter | Description                                                             | Type      | Default   |
+| --------- | ----------------------------------------------------------------------- | --------- | --------- |
+| color     | Set color, support hexadecimal and RGB                                  | string    | '#00adb5' |
+| speed     | Set animation speed                                                     | number(s) | -         |
+| size      | Set the component size, the optional value is `small` `default` `large` | string    | 'default' |
+| style     | Style the component                                                     | Object    | -         |
 
 #### 📝 Components list
 
-| components           | color | speed | size  | style | 
-| -------------------- | ----- | ----- | ----- | ----- | 
-| BabelLoading         | ✅    | ✅    | ✅   | ✅    |
-| BlockLoading         | ✅    | ✅    | ✅   | ✅    | 
-| BlockReserveLoading  | ✅    | ✅    | ✅   | ✅    | 
-| BoxLoading           | ✅    | ✅    | ✅   | ✅    | 
-| CircleLoading        | ✅    | ✅    | ✅   | ✅    | 
-| CircleToBlockLoading | ✅    | ✅    | ✅   | ✅    | 
-| CommonLoading        | ✅    | ✅    | ✅   | ✅    | 
-| DisappearedLoading   | ✅    | ✅    | ✅   | ✅    | 
-| LoopCircleLoading    | ✅    | ✅    | ✅   | ✅    | 
-| NineCellLoading      | ✅    | ✅    | ✅   | ✅    | 
-| TouchBallLoading     | ✅    | ✅    | ✅   | ✅    | 
-| TransverseLoading    | ✅    | ✅    | ✅   | ✅    | 
-| WaveLoading          | ✅    | ✅    | ✅   | ✅    | 
-| WaveTopBottomLoading | ✅    | ✅    | ✅   | ✅    | 
-| WindMillLoading      | ✅    | ✅    | ✅   | ✅    | 
-| JumpCircleLoading    | ✅    | ✅    | ✅   | ✅    | 
-| MeteorRainLoading    | ✅    | ✅    | ✅   | ✅    | 
-| RotateCircleLoading  | ✅    | ✅    | ✅   | ✅    | 
-| StickyBallLoading    | ✅    | ✅    | ✅   | ✅    | 
-| SemipolarLoading     | ✅    | ✅    | ✅   | ✅    | 
-| SolarSystemLoading   | ✅    | ✅    | ✅   | ✅    |
-| LadderLoading        | ✅    | ✅    | ✅   | ✅    |
-| HeartBoomLoading     | ✅    | ✅    | ✅   | ✅    |
-| RollBoxLoading       | ✅    | ✅    | ✅   | ✅    |
-| RectGraduallyShowLoading   | ✅    | ✅    | ✅   | ✅    |
-| PointSpreadLoading   | ✅    | ✅    | ✅   | ✅    |
-| ThreeHorseLoading   | ✅    | ✅    | ✅   | ✅    |
-| PassThrouthLoading   | ✅    | ✅    | ✅   | ✅    |
-| CoffeeLoading   | ✅    | ✅    | ✅   | ✅    |
-| BatteryLoading   | ✅    | ✅    | ✅   | ✅    |
-| DiamonLoading   | ✅    | ✅    |  🔨  | ✅    |
-| EatLoading   | ✅    | ✅    |  🔨  | ✅    |
+| components               | color | speed | size | style |
+| ------------------------ | ----- | ----- | ---- | ----- |
+| BabelLoading             | ✅    | ✅    | ✅   | ✅    |
+| BlockLoading             | ✅    | ✅    | ✅   | ✅    |
+| BlockReserveLoading      | ✅    | ✅    | ✅   | ✅    |
+| BoxLoading               | ✅    | ✅    | ✅   | ✅    |
+| CircleLoading            | ✅    | ✅    | ✅   | ✅    |
+| CircleToBlockLoading     | ✅    | ✅    | ✅   | ✅    |
+| CommonLoading            | ✅    | ✅    | ✅   | ✅    |
+| DisappearedLoading       | ✅    | ✅    | ✅   | ✅    |
+| LoopCircleLoading        | ✅    | ✅    | ✅   | ✅    |
+| NineCellLoading          | ✅    | ✅    | ✅   | ✅    |
+| TouchBallLoading         | ✅    | ✅    | ✅   | ✅    |
+| TransverseLoading        | ✅    | ✅    | ✅   | ✅    |
+| WaveLoading              | ✅    | ✅    | ✅   | ✅    |
+| WaveTopBottomLoading     | ✅    | ✅    | ✅   | ✅    |
+| WindMillLoading          | ✅    | ✅    | ✅   | ✅    |
+| JumpCircleLoading        | ✅    | ✅    | ✅   | ✅    |
+| MeteorRainLoading        | ✅    | ✅    | ✅   | ✅    |
+| RotateCircleLoading      | ✅    | ✅    | ✅   | ✅    |
+| StickyBallLoading        | ✅    | ✅    | ✅   | ✅    |
+| SemipolarLoading         | ✅    | ✅    | ✅   | ✅    |
+| SolarSystemLoading       | ✅    | ✅    | ✅   | ✅    |
+| LadderLoading            | ✅    | ✅    | ✅   | ✅    |
+| HeartBoomLoading         | ✅    | ✅    | ✅   | ✅    |
+| RollBoxLoading           | ✅    | ✅    | ✅   | ✅    |
+| RectGraduallyShowLoading | ✅    | ✅    | ✅   | ✅    |
+| PointSpreadLoading       | ✅    | ✅    | ✅   | ✅    |
+| ThreeHorseLoading        | ✅    | ✅    | ✅   | ✅    |
+| PassThrouthLoading       | ✅    | ✅    | ✅   | ✅    |
+| CoffeeLoading            | ✅    | ✅    | ✅   | ✅    |
+| BatteryLoading           | ✅    | ✅    | ✅   | ✅    |
+| DiamonLoading            | ✅    | ✅    | 🔨   | ✅    |
+| EatLoading               | ✅    | ✅    | 🔨   | ✅    |
+
 #### ⌨️ Participate in development
 
 Running the project for the first time
+
 ```bash
 $ git clone https://github.com/sixiaodong123/react-loading
 $ npm run dev
 ```
 
 `P.S.`: If startup fails, please install`yarn`first
+
 ```bash
 npm install -g yarn
 ```
@@ -136,10 +137,13 @@ $ npm run release
 - Bug fixes (bug / xxx)
 
 #### FAQ
-##### 🛎 I just want to use ```BabelLoading```，but it seems that I have to `import` the whole `react-loadingg`:
+
+##### 🛎 I just want to use `BabelLoading`，but it seems that I have to `import` the whole `react-loadingg`:
+
 ##### Try[react-loading-demand](https://github.com/sixiaodong123/react-loading-demand), or load on demand in the following way
+
+```tsx
+import BabelLoading from 'react-loadingg/lib/BabelLoading';
 ```
-import BabelLoading from 'react-loadingg/lib/BabelLoading'
-```
-  
+
 ##### 🛎 The component is completely centered by default. If you want to modify the component's style, the component's default completely centered style will be overwritten.
